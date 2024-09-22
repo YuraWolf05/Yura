@@ -1,0 +1,50 @@
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+h1{
+    font-size: 50px;
+    font-weight:600;
+    background-color: rgb(170, 3, 254);
+    color:rgb(252, 254, 255);
+    border: 5px solid rgb(107, 0, 160);
+    padding-block: 30px;
+    padding-left: 30px; 
+    border-radius: 20px;
+
+}
+h2{
+    font-size: 38px;
+    font-weight:500;
+    background-color: rgb(170, 3, 254);
+    color:rgb(255, 255, 255);
+    border: 5px solid rgb(107, 0, 160);
+    border-radius: 20px;
+    padding-left: 30px; 
+    padding-block: 15px;
+}
+a{
+    font-size: 25px;
+    color:rgb(170, 3, 254);
+}
+a1{
+    font-size: 25px;
+    color:rgb(2, 120, 246);
+}
+p{
+    font-size: 25px;
+    color:rgb(2, 120, 246);
+}
+h4{
+    font-size: 30px;
+    font-weight:550;
+    color:rgb(2, 120, 246);
+    padding-left: 30px;
+
+}
+li{
+    font-size: 20px;
+    font-weight:550;
+    color:rgb(2, 120, 246)
+}
