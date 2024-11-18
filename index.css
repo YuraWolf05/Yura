@@ -1,51 +1,66 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APEXIA Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
-</head>
-<body>
-<header>
-    <img src="{{ url_for('static', filename='wallpaper_home.jpg') }}" alt="APEXIA Banner">
-</header>
-<div class="container">
-    <button onclick="showContent('home')">Головна</button>
-    <button onclick="showContent('news')">Новини</button>
-    <button onclick="showContent('regulations')">Правила</button>
-    <button onclick="showContent('donate')">Донат</button>
-    <button onclick="window.location.href='{{ url_for('login') }}'">Вхід</button>
-</div>
-<section id="content">
-    <h2>Головна сторінка</h2>
-    <p>Ласкаво просимо на головну сторінку.</p>
-</section>
-
-<script>
-async function showContent(page) {
-    try {
-        // Загружаем JSON-файл с данными
-        const response = await fetch("{{ url_for('static', filename='content.json') }}");
-        const data = await response.json();
-        
-        // Проверяем, существует ли запрашиваемая страница в JSON-файле
-        if (data[page]) {
-            const content = document.getElementById('content');
-            const pageData = data[page];
-            
-            // Обновляем содержимое секции #content
-            content.innerHTML = `
-                <h2>${pageData.title}</h2>
-                <p>${pageData.text.replace(/\n/g, '<br>')}</p>
-            `;
-        } else {
-            console.error("Запрашиваемая страница не найдена в JSON-файле.");
-        }
-    } catch (error) {
-        console.error("Ошибка загрузки данных:", error);
-    }
+body {
+    font-family: system-ui;
+    line-height: 1.5;
+    min-height: 100vh;
+    background: #616060;
+    margin: 0;
 }
-</script>
-</body>
-</html>
+
+img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 60px #ffffff;
+    width: 100%;
+    max-width: 1540px;
+    z-index: -1; /* Відправляємо фон назад, щоб кнопки залишалися зверху */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 300px; /* Встановлюємо фіксований відступ від верху */
+    position: relative; /* Позиціонуємо кнопки відносно тіла сторінки */
+    z-index: 1; /* Залишаємо кнопки на передньому плані */
+}
+
+button {
+    background: #1e1d1d;
+    border: 1.5px solid #e0dddd;
+    border-radius: 7px;
+    cursor: pointer;
+    padding: 8px;
+    font-size: 32px;
+    color: #ffffff;
+    text-align: center;
+    width: 275px;
+    box-shadow: 0 0 35px #000000;
+    transition: border-color 0.3s;
+}
+
+button:hover {
+    border-color: #545454;
+}
+
+section {
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 24px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+#content {
+    text-align: left; /* Вирівнювання тексту по лівому краю */
+    padding: 20px; /* Додає відступи для зручного читання */
+    line-height: 1.5; /* Міжрядковий інтервал для поліпшення читабельності */
+}
+
+#content h2 {
+text-align: center; /* Вирівнювання заголовка по центру */
+}
+
+
