@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: system-ui;
+    line-height: 1.5;
+    min-height: 100vh;
+    background: #616060;
+    flex-direction: column;
+    margin: 0;
+}
+
+.main {
+    background-color: #504f4f;
+    border-radius: 15px;
+    box-shadow: 0 0 35px #d4d4d4;
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    width: 500px;
+    text-align: center;
+}
+h1{
+    text-align: center;
+    color: #dddada;
+    font-weight: bold;
+    font-size: 40px;
+}
+p{
+    text-align: center;
+    color: #dddada;
+    font-weight: bold;
+    font-size: 25px; 
+}
+
+label {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #dddada;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1.5px solid #666464;
+    border-radius: 5px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around; gap: 10px;
+} 
+    
+button {
+    background: none;
+    border: 1.5px solid #020202; /*колір рамки*/
+    border-radius: 7px;
+    cursor: pointer;
+    padding: 8px;
+    font-size: 32px;
+    color: #504f4f; /*колір тексту*/
+    background-color: #e8e6e6; /*колір фону*/
+    text-align: center;
+    width: 500px; /* Встановлює ширину кнопки */
+    box-shadow: 0 0 5px #303030;
+
+}
+
+button:hover {
+    border-color: #f7f6f6;/*колір фону ефекта*/
+}
