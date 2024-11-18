@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEXIA Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+<header>
+    <img src="{{ url_for('static', filename='wallpaper_home.jpg') }}" alt="APEXIA Banner">
+</header>
+<div class="container">
+    <button onclick="showContent('home')">Головна</button>
+    <button onclick="showContent('news')">Новини</button>
+    <button onclick="showContent('regulations')">Правила</button>
+    <button onclick="showContent('donate')">Донат</button>
+    <button onclick="window.location.href='{{ url_for('login') }}'">Вхід</button>
+</div>
+<section id="content">
+    <h2>Головна сторінка</h2>
+    <p>Ласкаво просимо на головну сторінку.</p>
+</section>
+
+<script>
+async function showContent(page) {
+    try {
+        // Загружаем JSON-файл с данными
+        const response = await fetch("{{ url_for('static', filename='content.json') }}");
+        const data = await response.json();
+        
+        // Проверяем, существует ли запрашиваемая страница в JSON-файле
+        if (data[page]) {
+            const content = document.getElementById('content');
+            const pageData = data[page];
+            
+            // Обновляем содержимое секции #content
+            content.innerHTML = `
+                <h2>${pageData.title}</h2>
+                <p>${pageData.text.replace(/\n/g, '<br>')}</p>
+            `;
+        } else {
+            console.error("Запрашиваемая страница не найдена в JSON-файле.");
+        }
+    } catch (error) {
+        console.error("Ошибка загрузки данных:", error);
+    }
+}
+</script>
+</body>
+</html>
