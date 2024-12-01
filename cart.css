@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #4d4d4d;
+    color: #333;
+}
+
+header h1 {
+    text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+}
+
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #dedede;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.item-name {
+    flex: 2;
+    font-size: 16px;
+}
+
+.item-quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    justify-content: center;
+}
+
+.item-quantity-controls button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.item-quantity-controls button:hover {
+    background-color: #05ff0d;
+}
+
+.item-quantity {
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.item-price {
+    flex: 1;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.remove-item {
+    flex: 1;
+    background-color: #cf1e0a;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    width: 50px !important; /* Гарантована ширина */
+    height: 30px !important; /* Гарантована висота */
+}
+
+.remove-item:hover {
+    background-color: #740202;
+}
+
+#cart-summary {
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#checkout {
+    
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: #09b906;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    margin-top: 1rem;
+    width: 300px !important; /* Гарантована ширина */
+    height: 50px !important; /* Гарантована висота22 */
+}
+
+#checkout:hover {
+    background-color: #0fdb0c;
+}
+
+#clear-cart {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: #cf1e0a;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    margin-left: 35rem;
+    margin-top:-5.8rem;
+    width: 200px !important; /* Гарантована ширина */
+    height: 50px !important; /* Гарантована висота */
+}
+
+#clear-cart:hover {
+    background-color: #740202;
+}
