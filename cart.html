@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cart APEXIA</title>
+    <meta name="description" content="Кошик товарів APEXIA">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cart.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon_transparent_green.png') }}">
+</head>
+<body>
+    <header>
+        <h1>Ваш кошик</h1>
+    </header>
+
+    <main>
+        <div id="cart-items">
+            <!-- Товари будуть динамічно завантажені -->
+        </div>
+        <div id="cart-summary">
+            <p>Загальна сума: <span id="cart-total">₴0.00</span></p>
+        </div>
+        <button id="checkout" disabled>Оформити замовлення</button>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let cart = JSON.parse(localStorage.getItem("cart")) || {};
+            if (typeof cart !== 'object' || cart === null) {
+                cart = {};
+                localStorage.setItem("cart", JSON.stringify(cart));
+            }
+    
+            const cartItemsContainer = document.getElementById("cart-items");
+            const cartTotalElement = document.getElementById("cart-total");
+            const checkoutButton = document.getElementById("checkout");
+    
+            // Функція для оновлення кошика
+            const updateCart = () => {
+                cartItemsContainer.innerHTML = ""; // Очищуємо вміст контейнера
+                let totalAmount = 0;
+                
+    
+                if (Object.keys(cart).length === 0) {
+                    const emptyMessage = document.createElement("p");
+                    emptyMessage.textContent = "Ваш кошик порожній. Додайте товари!";
+                    cartItemsContainer.appendChild(emptyMessage);
+                    cartTotalElement.textContent = "₴0.00";
+                    checkoutButton.disabled = true;
+                } else {
+                    for (const productId in cart) {
+                        const item = cart[productId];
+                        if (!item.name || !item.price || !Number.isFinite(item.price) || item.quantity <= 0) {
+                            continue;
+                        }
+    
+                        const itemDiv = document.createElement("div");
+                        itemDiv.classList.add("cart-item");
+    
+                        itemDiv.innerHTML = `
+                            <span class="item-name">${item.name}</span>
+                            <div class="item-quantity-controls">
+                                <button class="decrease-quantity" data-product-id="${productId}">-</button>
+                                <span class="item-quantity">${item.quantity}</span>
+                                <button class="increase-quantity" data-product-id="${productId}">+</button>
+                            </div>
+                            <span class="item-price">₴${(item.price * item.quantity).toFixed(2)}</span>
+                            <button class="remove-item" data-product-id="${productId}">Видалити</button>
+                        `;
+                        cartItemsContainer.appendChild(itemDiv);
+    
+                        totalAmount += item.price * item.quantity;
+                    }
+    
+                    cartTotalElement.textContent = `₴${totalAmount.toFixed(2)}`;
+                    checkoutButton.disabled = false;
+                }
+    
+                localStorage.setItem("cart", JSON.stringify(cart));
+            };
+    
+            // Функція для очищення кошика
+            const clearCart = () => {
+                if (confirm("Ви впевнені, що хочете очистити весь кошик?")) {
+                    cart = {};
+                    updateCart();
+                    window.location.href = '/donate';
+                }
+            };
+    
+            // Додаємо обробник для кнопок "Видалити" і зміни кількості
+            cartItemsContainer.addEventListener("click", (event) => {
+                const productId = event.target.dataset.productId;
+                if (!productId) return;
+    
+                if (event.target.classList.contains("remove-item")) {
+                    if (confirm("Ви дійсно хочете видалити цей товар?")) {
+                        delete cart[productId];
+                        updateCart();
+                    }
+                }
+    
+                if (event.target.classList.contains("increase-quantity")) {
+                    cart[productId].quantity += 1;
+                    updateCart();
+                }
+    
+                if (event.target.classList.contains("decrease-quantity")) {
+                    cart[productId].quantity -= 1;
+                    if (cart[productId].quantity <= 0) {
+                        delete cart[productId];
+                    }
+                    updateCart();
+                }
+            });
+    
+            // Обробка натискання на кнопку "Оформити замовлення"
+            checkoutButton.addEventListener("click", () => {
+                fetch('/checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ cart })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(`Замовлення оформлено! Ваш промо-код: ${data.promo_code}`);
+                            localStorage.removeItem("cart");
+                            window.location.href = '/donate';
+                        } else {
+                            alert("Не вдалося оформити замовлення. Спробуйте ще раз.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Помилка оформлення замовлення:", error);
+                        alert("Сталася помилка. Спробуйте ще раз.");
+                    });
+            });
+    
+            // Кнопка для очищення кошика
+            const clearCartButton = document.createElement("button");
+            clearCartButton.textContent = "Очистити кошик";
+            clearCartButton.id = "clear-cart";
+            clearCartButton.addEventListener("click", clearCart);
+            document.body.appendChild(clearCartButton);
+    
+            // Ініціалізація кошика
+            updateCart();
+        });
+    </script>    
+</body>
+</html>
