@@ -3,46 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Профіль користувача</title>
+    <title>User profile APEXIA</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
-</head>
-<body>
-    <header>
-        <h1>Ваш профіль</h1>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon_transparent_green.png') }}">
     </header>
-    <main>
+    <div class="container">
+        <!-- Лівий контейнер (Профіль) -->
         <div class="profile-container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            {% for category, message in messages %}
-             <div class="alert alert-{{ category }}">{{ message }}</div>
-            {% endfor %}
-          {% endif %}
-        {% endwith %}
             <h2>Ласкаво просимо, {{ user.name }}!</h2>
+            <img src="{{ url_for('static', filename=user.profile_image) }}" alt="Фото профілю">
             <p><strong>Email:</strong> {{ user.email }}</p>
-            <p><strong>Number:</strong> {{ user.number }}</p>
+            <p><strong>Номер:</strong> {{ user.number or "Не вказано" }}</p>
             <p><strong>Дата реєстрації:</strong> {{ user.date_joined.strftime('%Y-%m-%d %H:%M:%S') }}</p>
-            
-            <!-- Форма для редагування профілю -->
-            <h3>Редагувати профіль</h3>
-            <form method="post" action="{{ url_for('profile') }}">
-                <label for="name">Ім'я користувача:</label>
+
+            <form method="post" action="{{ url_for('profile') }}" enctype="multipart/form-data">
+                <label for="name">Ім'я:</label>
                 <input type="text" id="name" name="name" value="{{ user.name }}" required>
                 
                 <label for="email">Електронна пошта:</label>
                 <input type="email" id="email" name="email" value="{{ user.email }}" required>
                 
-                <label for="password">Новий пароль (опціонально):</label>
-                <input type="password" id="password" name="password" placeholder="Залиште порожнім, якщо не змінюється">
+                <label for="password">Новий пароль:</label>
+                <input type="password" id="password" name="password" placeholder="Опціонально">
+                
+                <label for="profile_image">Фото профілю:</label>
+                <input type="file" id="profile_image" name="profile_image" accept="image/*">
                 
                 <button type="submit">Оновити</button>
             </form>
 
-            <div class="logout-container">
+            <!-- Кнопки поруч з кнопкою "Оновити" -->
+            <div class="buttons-container">
+                <button onclick="window.location.href='{{ url_for('home') }}'">Головна</button>
                 <button onclick="window.location.href='{{ url_for('logout') }}'">Вийти</button>
             </div>
         </div>
-    </main>
+
+        <!-- Правий контейнер (Замовлення) -->
+        <div class="orders-container">
+            <h2>Історія замовлень</h2>
+            <div>
+                {% if orders %}
+                    {% for order in orders %}
+                    <div class="order">
+                        <p><strong>Товар:</strong> {{ order.product_name }}</p>
+                        <p><strong>Кількість:</strong> {{ order.quantity }}</p>
+                        <p><strong>Дата:</strong> {{ order.date.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+                        <p><strong>Промо-код:</strong> {{ order.promo_code }}</p>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p>У вас поки немає замовлень.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </body>
-</html>
