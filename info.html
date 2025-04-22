@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apexia project info</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='info.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('home') }}">Головна</a></li>
+                <li><a href="{{ url_for('news') }}">Новини</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('info') }}">Інфо</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('info') }}">Приєднатися</a></li>
+                      <!--<li><a href="{{ url_for('Territories') }}">Території та місця</a></li>-->
+                        <li><a href="{{ url_for('Systems') }}">Системи та механіки</a></li>
+                        <li><a href="{{ url_for('Aboutus') }}">Про нас</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('regulations') }}">Правила</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('donate') }}">Магазин</a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('carsChernorus') }}">Chernorus</a></li>
+                    <li><a href="{{ url_for('carsDeerisle') }}">Deerisle</a></li>
+                </ul>
+                <li><a href="{{ url_for('login') }}">Вхід</a></li>
+            </ul>
+        </nav>
+        {% if user %}
+        <div class="user-info">
+            <a href="/profile">
+                <img src="{{ user.profile_image_url }}"
+                alt="Фото профілю" 
+                class="profile-image">
+            </a>
+            <div class="info-span">
+                <span>{{ user.name }}</span> 
+            </div>
+        </div> 
+        {% endif %}
+        <div class="banner-info">
+            <a href="https://discord.gg/VJcPQApmMz">
+                <img src="{{ url_for('static', filename='discort.png') }}" alt="Discord" class="discort-icon">
+            </a>
+            <a href="https://www.tiktok.com/@yarky3">
+                <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram" class="instagram-icon">
+            </a>
+            <a href="https://www.youtube.com/@YtYarky1/shorts">
+                <img src="{{ url_for('static', filename='youtube.png') }}" alt="YouTube" class="youtube-icon">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Як почати грати у DayZ?</h1>
+            <p>Дотримуйтесь цієї інструкції, щоб приєднатися до нашого серверу Apexia Project.</p>
+        </section>
+        
+        <section class="steps">
+            <div class="step">
+                <img src="{{ url_for('static', filename='launsher1.png') }}" alt="Крок 1">
+                <h2>Крок 1: Купити та встановити DayZ</h2>
+                <p>Переконайтеся, що у вас встановлена офіційна версія гри DayZ через Steam.</p>
+            </div>
+        
+            <div class="step">
+                <img src="{{ url_for('static', filename='launsher2.png') }}" alt="Крок 2">
+                <h2>Крок 2: Перейдіть до вкладки "Сообщество"</h2>
+                <p>У рядку пошуку введіть <strong>Apexia Project</strong>. Коли знайдете сервери, натисніть на зірочку, щоб зберегти їх.</p>
+            </div>
+        
+            <div class="step">
+                <img src="{{ url_for('static', filename='launsher3.png') }}" alt="Крок 3">
+                <h2>Крок 3: Знайдіть сервер Apexia</h2>
+                <p>У лаунчерi перейдіть до вкладки "Избранное", виберіть наш сервер <strong>APEXIA PROJECT</strong> і натисніть "Вступить".</p>
+            </div>
+        
+            <div class="step">
+                <img src="{{ url_for('static', filename='launsher4.png') }}" alt="Крок 4">
+                <h2>Крок 4: Встановіть необхідні моди</h2>
+                <p>Система автоматично завантажить усі необхідні моди для гри.</p>
+            </div>
+        
+            <div class="step">
+                <img src="{{ url_for('static', filename='launsher5.png') }}" alt="Крок 5">
+                <h2>Крок 5: Пряме підключення</h2>
+                <p>Якщо у вкладці "Сообщество" ви не змогли знайти наші сервери, можете підключитися напряму.</p>
+                <p>APEXIA PROJECT CHERNO — IP сервера: 148.251.11.178:2702</p>
+                <p>APEXIA PROJECT DEERISLE — IP сервера: 148.251.11.178:2602</p>
+            </div>
+        </section>  
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('home') }}">➥ Назад</a></li>
+            </ul>
+        </nav>        
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".dropdown > a").forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+        
+                    let parent = this.parentElement;
+        
+                    // Закриваємо всі інші відкриті меню
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        if (drop !== parent) {
+                            drop.classList.remove("active");
+                        }
+                    });
+        
+                    // Перемикаємо активний стан
+                    parent.classList.toggle("active");
+                });
+            });
+        
+            // Закриваємо меню при кліку за його межами
+            document.addEventListener("click", function (e) {
+                if (!e.target.closest(".dropdown")) {
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        drop.classList.remove("active");
+                    });
+                }
+            });
+        });
+        
+    </script>
+    <footer>
+        <p>&copy; 2025 APEXIA Project. Усі права захищені.</p>
+    </footer>
+</body>
+</html>
+

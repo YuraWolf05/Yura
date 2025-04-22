@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Mining</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='system.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('home') }}">Головна</a></li>
+                <li><a href="{{ url_for('news') }}">Новини</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('info') }}">Інфо</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('info') }}">Приєднатися</a></li>
+                        <li><a href="{{ url_for('Territories') }}">Території та місця</a></li>
+                        <li><a href="{{ url_for('Systems') }}">Системи та механіки</a></li>
+                        <li><a href="{{ url_for('Aboutus') }}">Про нас</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('regulations') }}">Правила</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('donate') }}">Магазин</a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('carsChernorus') }}">Chernorus</a></li>
+                    <li><a href="{{ url_for('carsDeerisle') }}">Deerisle</a></li>
+                </ul>
+                <li><a href="{{ url_for('login') }}">Вхід</a></li>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>
+        {% if user %}
+        <div class="user-info">
+            <a href="/profile">
+                <img src="{{ user.profile_image_url }}"
+                alt="Фото профілю" 
+                class="profile-image">
+            </a>
+            <div class="info-span">
+                <span>{{ user.name }}</span> 
+            </div>
+        </div> 
+        {% endif %}
+        <div class="banner-info">
+            <a href="https://discord.gg/VJcPQApmMz">
+                <img src="{{ url_for('static', filename='discort.png') }}" alt="Discord" class="discort-icon">
+            </a>
+            <a href="https://www.tiktok.com/@yarky3">
+                <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram" class="instagram-icon">
+            </a>
+            <a href="https://www.youtube.com/@YtYarky1/shorts">
+                <img src="{{ url_for('static', filename='youtube.png') }}" alt="YouTube" class="youtube-icon">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Майнінг біткоіна</h1>
+        </section>
+        
+        <section class="steps">
+            <div class="step">
+                <h2>На карті ви могли знайти флешки, запаковані відео карти (Packaged video card), а також Rig-Kit (маленька майнінг ферма). Усе це є необхідним для майнінгу біткоїна, який у свою чергу знадобиться для крафту інших речей. Також, з’явиться функція продажу біткоїна “Магнату”.</h2>
+                <img src="{{ url_for('static', filename='image 77.webp') }}" >
+                <h2>Щоб відкрити запаковану відеокарту, треба покласти упакування на підлогу та затиснути F. Вам може рандомно випасти одна з 13 відеокарток, які відрізняються своєю потужністю.</h2>
+                <img src="{{ url_for('static', filename='image 78.webp') }}" >
+                <h2>Є 3 рівні потужності, які впливають на швидкість виробництва біткоїну: </h2>
+                <p style="color: rgb(12, 201, 12); font-size: 22px; left: -30px;">1. Low</p>
+                <p>• GPU1080</p>
+                <p>• GPU2000d</p>
+                <p>• GPU</p>
+                <p style="color: rgb(232, 215, 33);  font-size: 22px; left: -30px;">2. Medium</p>
+                <p>• GPU2080TI</p>
+                <p>• NvidiaProBlack</p>
+                <p>• NvidiaProRed</p>
+                <p>• NvidiaProawWhite</p>
+                <p style="color: rgb(233, 10, 10); font-size: 22px; left: -30px;">3. High</p>
+                <p>• GPU3080</p>
+                <p>• GPU4090</p>
+                <p>• GPUTITANRTX</p>
+                <p>• MSI_3080</p>
+                <p>• UnnamedGPU</p>
+                <p>• RTX6900</p>
+            </div>
+
+            <div class="step">
+                <h2>Rig-Kit (маленька майнінг ферма) можна використовувати двома способами: </h2>
+                <p>1. Встановити в такому вигляді;</p>
+                <p>2. Використати для крафту великою майнінг ферми.</p>
+                <h2>Розберемо по черзі кожен з варіантів. Rig-Kit, який ви знайшли знаходиться в закритому стані. Візьміть його до рук та розмістіть в зручному місті. У вас з’являться слоти, в які можна встановити 4 відеокартки (усі можуть бути різні) та флешку. Далі треба під’єднати маленьку майнінг ферму до генератора або сонячної панелі за допомогою кабельної катушки.</h2>
+                <img src="{{ url_for('static', filename='image 79.webp') }}" >
+            </div>
+
+            <div class="step">
+                <h2>Для другого варіанту треба скористатися крафт-столом, зайдіть у розділ “Електроніка”, крафт-рецепт можна побачити знизу.</h2>
+                <img src="{{ url_for('static', filename='image 80.webp') }}" >
+            </div>
+
+            <div class="step">
+                <h2>Велику майнінг ферму також треба взяти до рук і за допомогою ЛКМ розмістити в зручному місці. Але, для її запуску вам знадобляться також: fanbar, power supply unit, heatsync, fan (у кількості 6 штук). Fanbar має 6 слотів, до яких треба скласти fan. </h2>
+                <img src="{{ url_for('static', filename='image 81.webp') }}" >
+            </div>
+
+            <div class="step">
+                <h2>Далі все як і у минулому варіанті, усі деталі складаємо на їх слоти, підключаємо за допомогою кабельної катушки. Готовий вигляд можна побачити нижче:</h2>
+                <img src="{{ url_for('static', filename='image 82.webp') }}" >
+                <h2>Велика майнінг ферма розрахована на 10 відеокарток. Усі відеокартки можуть бути різні, це вплине тільки на швидкість виробництва. Фарм біткоїна також залежить від того, чи є хтось біля неї. </h2>
+                <img src="{{ url_for('static', filename='image 83.webp') }}" >
+                <h2>Також, до вашої уваги момент, якщо включити генератор, біткоїн ферма не запуститься, це треба робити вручну. Для цього підійдіть до майнінг ферми та затисніть F:</h2>
+                <img src="{{ url_for('static', filename='image 84.webp') }}" >
+            </div>
+
+            <div class="step">
+                <h1 style="color: rgb(220, 14, 220);">ОНОВЛЕННЯ МОДУ</h1>
+                <h2>Наразі, відеокарти втрачають свою “вагу” по мірі вифармлення біткоїну. З маленькою майнінг ферми та 4 середніх відеокарток виходить приблизно 6 біткоїнів.</h2>
+                <h2>Також, тепер вифармлені бітки автоматично не падають у слот флешки. Щоб його перемістити у флешку, треба вимкнути майнінг-ферму, вручну перетащити біткоїн в слот флешки (або інвентар) і знову ввімкнути майнінг-ферму для фарму наступного біткоїну. </h2>
+                <h2>Дещо змінилась текстура біткоїну. Як він виглядає зараз можно побачити на скріні нижче.</h2>
+                <img src="{{ url_for('static', filename='image 85.webp') }}" >
+                <h2>Місцезнаходження Магнату, для продажу біткоїна (Чорний ринок, карта DeerIsle (дивитись треба саме на червону мітку)):</h2>
+                <img src="{{ url_for('static', filename='image 86.webp') }}" >
+                <p style="color: rgb(237, 8, 8); font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">Автор CUMbala</p>
+            </div>
+
+        </section>  
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>        
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".dropdown > a").forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+        
+                    let parent = this.parentElement;
+        
+                    // Закриваємо всі інші відкриті меню
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        if (drop !== parent) {
+                            drop.classList.remove("active");
+                        }
+                    });
+        
+                    // Перемикаємо активний стан
+                    parent.classList.toggle("active");
+                });
+            });
+        
+            // Закриваємо меню при кліку за його межами
+            document.addEventListener("click", function (e) {
+                if (!e.target.closest(".dropdown")) {
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        drop.classList.remove("active");
+                    });
+                }
+            });
+        });
+        
+    </script>
+    <footer>
+        <p>&copy; 2025 APEXIA Project. Усі права захищені.</p>
+    </footer>
+</body>
+</html>

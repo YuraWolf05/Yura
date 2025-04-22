@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEXIA Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_receipts.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+</head>
+<body>
+    <header>
+        <h1>Адміністративна панель</h1>
+    </header>
+    <table>
+        <thead>
+            <tr>
+                <th>Ім'я користувача</th>
+                <th>Товар</th>
+                <th>Ціна</th>
+                <th>Затверджено</th>
+                <th>Чек</th>
+                <th>Статус</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in requests %}
+            <tr>
+                <td>{{ request.user_name }}</td>
+                <td>{{ request.product_name }}</td>
+                <td>{{ request.product_price }}</td>
+                <td>{{ request.approved_by or 'Немає' }}</td>
+                <td>
+                    {% if request.receipt_image != 'Очікує завантаження' %}
+                        <img src="{{ url_for('static', filename=request.receipt_image) }}" alt="Чек" style="width: 100px;">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='default-placeholder.jpg') }}" alt="Очікується чек" style="width: 100px;">
+                    {% endif %}
+                </td>
+                <td>{{ request.status }}</td>
+                <td>
+                    {% if request.status == 'pending' %}
+                    <button onclick="handleRequest({{ request.id }}, 'approve')">Затвердити</button>
+                    <button onclick="handleRequest({{ request.id }}, 'reject')">Відхилити</button>
+                    {% else %}
+                    {{ request.status }}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <form action="/admin/grant_admin" method="POST">
+        <label 
+               style="margin-left: 15px;"
+               for="username">Ім'я користувача:</label>
+        <input 
+                style="margin-left: 10px;"
+                type="text" id="username" name="username" required>
+        <button type="submit">Надати права адміністратора</button>
+        <button onclick="window.location.href='{{ url_for('profile') }}'">Вийти</button>
+        <button onclick="window.location.href='{{ url_for('admin_users') }}'">Users</button>
+    </form>
+            <!-- Кнопка активації режиму додавання товару -->
+     <form id="activate-add-form" method="post" action="{{ url_for('activate_add_mode') }}">
+         <button 
+         style="color: rgb(255, 255, 255); background-color: rgb(53, 134, 13); font-size: 14px; padding: 10px 15px; border-radius: 8px; border: none; cursor: pointer; margin-top: 5px; margin-left: 5px;"
+         type="submit">🔓 Активувати додавання товару</button>
+     </form>
+    
+     <!-- Кнопка деактивації -->
+    <form id="deactivate-add-form" method="post" action="{{ url_for('deactivate_add_mode') }}">
+        <button 
+        style="color: rgb(255, 255, 255); background-color: rgb(53, 134, 13); font-size: 14px; padding: 10px 15px; border-radius: 8px; border: none; cursor: pointer; margin-top: 5px; margin-left: 5px;"
+        type="submit">🔒 Деактивувати</button>
+    </form>
+
+    <script> 
+            function handleRequest(requestId, action) {
+            fetch(`/admin/approve_receipt/${requestId}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: action })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    alert(
+                        action === 'approve' 
+                        ? `Заявку затверджено! Промо-код: ${data.promo_code}` 
+                        : 'Заявку відхилено.'
+                    );
+                    location.reload(); // Оновлення сторінки
+                } else {
+                    alert(data.message || 'Щось пішло не так.');
+                }
+            })
+            .catch(error => console.error('Fetch error:', error));
+        }
+
+        // Активація режиму додавання товару (через Ajax)
+        document.getElementById('deactivate-add-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        fetch('{{ url_for("deactivate_add_mode") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('🔒 Режим додавання товару деактивовано');
+            } else {
+                alert('❌ Не вдалося деактивувати: ' + data.message);
+            }
+        });
+    });
+    document.getElementById('activate-add-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            fetch('{{ url_for("activate_add_mode") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('✅ Режим додавання товару активовано');
+                } else {
+                    alert('❌ Не вдалося активувати: ' + data.message);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

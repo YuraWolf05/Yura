@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата замовлення</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='payment.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+</head>
+<body>
+    <header>
+        <h1>Оплата замовлення</h1>
+    </header>
+    <main>
+        <section class="bank-details">
+            <button class="wiki-button" onclick="window.open('https://apexiaua.donatik.io/uk', '_blank')">Перейдіть для оплати картою на наший Apexia Project Донатік</button>
+        </section>
+
+        <section class="upload-receipt_user">
+            <form action="/upload_receipt_user" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="cart_data" id="cart_data"> <!-- Для передачі JSON даних -->
+                
+                <section class="cart-summary">
+                    <h2>Обрані товари</h2>
+                    <ul id="selected-products"></ul>
+                </section>
+                <p id="total-price"></p>
+                
+                <label for="buyer_name">Ім'я покупця:</label>
+                <input type="text" id="buyer_name" name="buyer_name" value="{{ current_user.name }}" readonly>
+                
+                <label for="receipt_image">Чек:</label>
+                <input type="file" name="receipt_image" id="receipt_image" required>
+                
+                <button type="submit">Завантажити чек</button>
+            </form>
+            
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const cartData = JSON.parse(localStorage.getItem("cart")) || {};
+                    const selectedProductsContainer = document.getElementById("selected-products");
+                    const cartDataInput = document.getElementById("cart_data");
+                    const totalPriceElement = document.getElementById("total-price");
+            
+                    if (Object.keys(cartData).length === 0) {
+                        console.error("Кошик порожній. Дані не передаються.");
+                        selectedProductsContainer.innerHTML = "<li>Ваш кошик порожній</li>";
+                        cartDataInput.value = ""; // Поле залишається порожнім
+                        return;
+                    }
+            
+                    // Заповнюємо список обраних товарів
+                    let total = 0;
+                    Object.entries(cartData).forEach(([productId, item]) => {
+                        const listItem = document.createElement("li");
+                        listItem.textContent = `${item.name} (₴${item.price.toFixed(2)}) x ${item.quantity}`;
+                        selectedProductsContainer.appendChild(listItem);
+                        total += item.price * item.quantity;
+                    });
+            
+                    // Загальна сума
+                    totalPriceElement.textContent = `Загальна сума: ₴${total.toFixed(2)}`;
+                    cartDataInput.value = JSON.stringify(cartData); // Передаємо дані кошика
+            
+                    // Після відправлення чека очищаємо кошик
+                    document.querySelector("form").addEventListener("submit", () => {
+                        localStorage.removeItem("cart"); // Очищуємо кошик після успішної оплати
+                    });
+                });
+            </script>
+    </main>
+</body>
+</html>

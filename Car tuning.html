@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Tuning</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='system.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('home') }}">Головна</a></li>
+                <li><a href="{{ url_for('news') }}">Новини</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('info') }}">Інфо</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('info') }}">Приєднатися</a></li>
+                        <li><a href="{{ url_for('Territories') }}">Території та місця</a></li>
+                        <li><a href="{{ url_for('Systems') }}">Системи та механіки</a></li>
+                        <li><a href="{{ url_for('Aboutus') }}">Про нас</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('regulations') }}">Правила</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('donate') }}">Магазин</a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('carsChernorus') }}">Chernorus</a></li>
+                    <li><a href="{{ url_for('carsDeerisle') }}">Deerisle</a></li>
+                </ul>
+                <li><a href="{{ url_for('login') }}">Вхід</a></li>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>
+        {% if user %}
+        <div class="user-info">
+            <a href="/profile">
+                <img src="{{ user.profile_image_url }}"
+                alt="Фото профілю" 
+                class="profile-image">
+            </a>
+            <div class="info-span">
+                <span>{{ user.name }}</span> 
+            </div>
+        </div> 
+        {% endif %}
+        <div class="banner-info">
+            <a href="https://discord.gg/VJcPQApmMz">
+                <img src="{{ url_for('static', filename='discort.png') }}" alt="Discord" class="discort-icon">
+            </a>
+            <a href="https://www.tiktok.com/@yarky3">
+                <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram" class="instagram-icon">
+            </a>
+            <a href="https://www.youtube.com/@YtYarky1/shorts">
+                <img src="{{ url_for('static', filename='youtube.png') }}" alt="YouTube" class="youtube-icon">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Тюнінг авто</h1>
+        </section>
+        
+        <section class="steps">
+            <div class="step">
+                <h2>Наразі доступно 3 машини, які підлягають тюнінгу: HummerH2, Lexus LX470, UAZ 3151, BMW X5M</h2>
+                <img src="{{ url_for('static', filename='image 96.webp') }}" >
+            </div>
+
+                <div class="step">
+                    <h2>В даному гайді буде розписано про кожну з них і що в них змінюється при кожному етапі тюнінгу.</h2>
+                </div>
+
+                <div class="step">
+                    <h2 style="color: chocolate; font-size: 22px;" >HummerH2</h2>
+                    <h2>Слоти: 800 слотів багажнику + 2 бочки, рюкзак та каністра</h2>
+                    <p>Має лише пожливість зміни кольору. Різні балончики будуть продаватись у торговця авто.запчастин на зелених зонах. Балончик з фарбою треба помістити у слот машини (цей слот знаходиться одразу після слотів під бочки і виглядає відповідно - має іконку балончику).</p>
+                    <img src="{{ url_for('static', filename='image 97.webp') }}" >
+                    <img src="{{ url_for('static', filename='image 98.webp') }}" >
+                </div>
+
+                <div class="step">
+                    <h2 style="color: rgb(40, 90, 241); font-size: 22px;" >Lexus LX470</h2>
+                    <h2>Початкові слоти: 800 слотів + 2 бочки та рюкзак.</h2>
+                    <p>Тут трошки цікавіше, при тюнінгу машини можна трошки змінити зовнішній вигляд машини та слоти</p>
+                    <p>Нижче можна побачити, як виглядають додаткові деталі.</p>
+                    <img src="{{ url_for('static', filename='image 99.webp') }}" >
+                    <h2>Щоб розпочати тюнінг вам треба спершу взяти звичайний розвідний ключ і встановити в слот модифікації, нижче можно побачити як це виглядає (так само ключ треба використовувати і в двох інших моделях):</h2>
+                    <img src="{{ url_for('static', filename='image 100.webp') }}" >
+                    <h2>Після того, як ключ вже у слоті у вас відкривається можливість додати нові деталі. Про кожну окремо:</h2>
+                    <p>1.Силовий передній бампер:</p>
+                    <img src="{{ url_for('static', filename='image 101.webp') }}" >
+                    <p>2.Силовий задній бампер:</p>
+                    <img src="{{ url_for('static', filename='image 102.webp') }}" >
+                    <p>3.Комплект багажнику на дах (додає додаткові 2 слоти під бочки і 1 слот під ящик):</p>
+                    <img src="{{ url_for('static', filename='image 103.webp') }}" >
+                    <p>4.Шнорхель:</p>
+                    <img src="{{ url_for('static', filename='image 104.webp') }}" >
+                    <h2>Дана модель також має слот під балончик з фарбою.</h2>
+                </div>
+                
+                <div class="step">
+                    <h2 style="color: rgb(236, 225, 20); font-size: 22px;" >UAZ 3151</h2>
+                    <h2>Початкові слоти: 400 слотів багажнику</h2>
+                    <p>На цій моделі можна встановити 5 деталій, далі детальніше.</p>
+                    <img src="{{ url_for('static', filename='image 105.webp') }}" >
+                    <p>1.Cиловий передній бампер:</p>
+                    <img src="{{ url_for('static', filename='image 106.webp') }}" >
+                    <p>2.Силовий задній бампер:</p>
+                    <img src="{{ url_for('static', filename='image 107.webp') }}" >
+                    <p>3.Шноркель і пороги:</p>
+                    <img src="{{ url_for('static', filename='image 108.webp') }}" >
+                    <p>4.Металевий дах (встановлюється замість брезенту):</p>
+                    <img src="{{ url_for('static', filename='image 109.webp') }}" >
+                    <p>5.Багажник на дах (добавляє слоти під 3 бочки):</p>
+                    <img src="{{ url_for('static', filename='image 110.webp') }}" >
+                    <p>Ось кінцеві слоти після модернізації, як бачимо є слот під балончик з фарбою:</p>
+                    <img src="{{ url_for('static', filename='image 111.webp') }}" >
+                </div>
+
+                <div class="step">
+                    <h2 style="color: rgb(236, 175, 20); font-size: 22px;" >BMW X5M</h2>
+                    <h2>Початкові слоти: 800 слотів + 2 бочки та рюкзак.</h2>
+                    <p>Дана модель має додаткові 4 деталі. </p>
+                    <img src="{{ url_for('static', filename='image 112.webp') }}" >
+                    <p>1.Силовий передній бампер:</p>
+                    <img src="{{ url_for('static', filename='image 113.webp') }}" >
+                    <p>2.Пороги::</p>
+                    <img src="{{ url_for('static', filename='image 114.webp') }}" >
+                    <p>3.Комплект багажника на дах (добавляє слоти під 2 бочки та 1 ящик):</p>
+                    <img src="{{ url_for('static', filename='image 115.webp') }}" >
+                    <p>4.Шнорхель:</p>
+                    <img src="{{ url_for('static', filename='image 116.webp') }}" >
+                    <p>Слоти під кінець модернізації. Також є слот під балончик з фарбою.</p>
+                    <img src="{{ url_for('static', filename='image 117.webp') }}" >
+                    <p style="color: rgb(237, 8, 8); font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">Автор CUMbala</p>
+                </div>
+        </section>  
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>        
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".dropdown > a").forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+        
+                    let parent = this.parentElement;
+        
+                    // Закриваємо всі інші відкриті меню
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        if (drop !== parent) {
+                            drop.classList.remove("active");
+                        }
+                    });
+        
+                    // Перемикаємо активний стан
+                    parent.classList.toggle("active");
+                });
+            });
+        
+            // Закриваємо меню при кліку за його межами
+            document.addEventListener("click", function (e) {
+                if (!e.target.closest(".dropdown")) {
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        drop.classList.remove("active");
+                    });
+                }
+            });
+        });
+        
+    </script>
+    <footer>
+        <p>&copy; 2025 APEXIA Project. Усі права захищені.</p>
+    </footer>
+</body>
+</html>

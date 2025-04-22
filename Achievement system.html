@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievement system</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='system.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('home') }}">Головна</a></li>
+                <li><a href="{{ url_for('news') }}">Новини</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('info') }}">Інфо</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('info') }}">Приєднатися</a></li>
+                        <li><a href="{{ url_for('Territories') }}">Території та місця</a></li>
+                        <li><a href="{{ url_for('Systems') }}">Системи та механіки</a></li>
+                        <li><a href="{{ url_for('Aboutus') }}">Про нас</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('regulations') }}">Правила</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('donate') }}">Магазин</a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('carsChernorus') }}">Chernorus</a></li>
+                    <li><a href="{{ url_for('carsDeerisle') }}">Deerisle</a></li>
+                </ul>
+                <li><a href="{{ url_for('login') }}">Вхід</a></li>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>
+        {% if user %}
+        <div class="user-info">
+            <a href="/profile">
+                <img src="{{ user.profile_image_url }}"
+                alt="Фото профілю" 
+                class="profile-image">
+            </a>
+            <div class="info-span">
+                <span>{{ user.name }}</span> 
+            </div>
+        </div> 
+        {% endif %}
+        <div class="banner-info">
+            <a href="https://discord.gg/VJcPQApmMz">
+                <img src="{{ url_for('static', filename='discort.png') }}" alt="Discord" class="discort-icon">
+            </a>
+            <a href="https://www.tiktok.com/@yarky3">
+                <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram" class="instagram-icon">
+            </a>
+            <a href="https://www.youtube.com/@YtYarky1/shorts">
+                <img src="{{ url_for('static', filename='youtube.png') }}" alt="YouTube" class="youtube-icon">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Система досягнень</h1>
+        </section>
+        
+        <section class="steps">
+            <div class="step">
+                <h2>На сервері з'явилась нова механіка, а саме досягнення. Щоб відкрити список досягненнь, натисніть англійську букву M, зверху у вас з'явиться нове вікно у самому кінці. </h2>
+                <img src="{{ url_for('static', filename='image 72.webp') }}" >
+                <h2>Тепер є можливість отримувати досягнення за ті чи інші дії. Деякі нічого не дають, деякі дають непогані гроші прямісінько на банківський рахунок. Також деякі отримані досягнення можна використовувати в якості титулу, який буде відображатись над вашим ніком в сейф зонах.</h2>
+                <h2>Знизу можна подивитись, як виглядає вікно досягненнь.</h2>
+                <img src="{{ url_for('static', filename='image 73.webp') }}" > 
+                <p style="color: rgb(237, 8, 8); font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">Автор CUMbala</p>
+            </div>
+
+        </section>  
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>        
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".dropdown > a").forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+        
+                    let parent = this.parentElement;
+        
+                    // Закриваємо всі інші відкриті меню
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        if (drop !== parent) {
+                            drop.classList.remove("active");
+                        }
+                    });
+        
+                    // Перемикаємо активний стан
+                    parent.classList.toggle("active");
+                });
+            });
+        
+            // Закриваємо меню при кліку за його межами
+            document.addEventListener("click", function (e) {
+                if (!e.target.closest(".dropdown")) {
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        drop.classList.remove("active");
+                    });
+                }
+            });
+        });
+        
+    </script>
+    <footer>
+        <p>&copy; 2025 APEXIA Project. Усі права захищені.</p>
+    </footer>
+</body>
+</html>

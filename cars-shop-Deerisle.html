@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>APEXIA Store</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='donate.css') }}">
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+ </head>
+    <body>
+        <header>
+            <nav> 
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Головна</a></li>
+                    <li><a href="{{ url_for('carsDeerisle') }}">Автівки</a></li>
+                    <li><a href="{{ url_for('trucksDeerisle') }}">Вантажівки</a></li>
+                    <li><a href="{{ url_for('helicoptersDeerisle') }}">Гвинтокрили</a></li>
+                    <!--<li><a href="{{ url_for('clothingDeerisle') }}">Комплект одягу</a></li>-->
+                    <li><a href="{{ url_for('basesDeerisle') }}">Бази</a></li>
+                </ul>
+            </nav>
+            {% if user %}
+            <div class="user-info">
+                <a href="/profile">
+                    <img src="{{ user.profile_image_url }}"
+                    alt="Фото профілю" 
+                    class="profile-image">
+                </a>
+                <div class="info-span">
+                    <span>{{ user.name }}</span> 
+                </div>
+                <div class="cart-panel">
+                    <a href="/cart" class="cart-button">
+                        <img src="{{ url_for('static', filename='shopping-shop.png') }}" 
+                             alt="Кошик" class="cart-icon">
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div> 
+            {% endif %}
+        </header>   
+        <main>
+            <!-- Автівки -->
+            <section id="cars" class="category">             
+            <div class="products">
+                   
+               <div class="product">
+                    <img src="{{ url_for('static', filename='Auto insurance on Vype.webp') }}" alt="Car 1">
+                    <h3>Страхування від знищень на вайп Авто</h3>
+                    <p>Страховка не поширюється на ПВП зони.</p>
+                    <p class="promo-stock" data-product="Insurance against destruction on wipes Auto">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="1">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴150</h3>
+                    <button class="buy" 
+                        data-product-id="1" 
+                        data-product-name="Insurance against destruction on wipes Auto" 
+                        data-product-price="150">
+                        Придбати
+                    </button>
+                </div>
+                
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Ford Bronco.webp') }}" alt="Car 2">
+                    <h3>Ford Bronco</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 590 слотів</p>
+                    <p>Колір: Чорний</p>
+                    <p class="promo-stock" data-product="Ford Bronco">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="2">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴400</h3>
+                    <button class="buy" 
+                        data-product-id="2" 
+                        data-product-name="Ford Bronco" 
+                        data-product-price="400">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='GMC BOSS.webp') }}" alt="Car 3">
+                    <h3>GMC BOSS</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 560 слотів</p>
+                    <p>Колір: Червоний</p>
+                    <p> Кріплення: Бочки х2</p>
+                    <p class="promo-stock" data-product="GMC BOSS">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="3">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴450</h3>
+                    <button class="buy" 
+                        data-product-id="3" 
+                        data-product-name="GMC BOSS" 
+                        data-product-price="450">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Jeep GladiatorF9 BOSS.webp') }}" alt="Car 4">
+                    <h3>Jeep GladiatorF9 BOSS</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 600 слотів</p>
+                    <p>Колір: Золотий</p>
+                    <p> Кріплення: Каністру х2 - Бочки, 4- Ящик х2,</p>
+                    <p>Рюкзак</p>
+                    <p class="promo-stock" data-product="Jeep GladiatorF9 BOSS">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="4">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴800</h3>
+                    <button class="buy" 
+                        data-product-id="4" 
+                        data-product-name="Jeep GladiatorF9 BOSS" 
+                        data-product-price="800">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Chevrolet Tahoe.webp') }}" alt="Car 5">
+                    <h3>Chevrolet Tahoe</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 660 слотів</p>
+                    <p>Колір: Коричневий</p>
+                    <p> Кріплення: Бочки x2, Рюкзак</p>
+                    <p class="promo-stock" data-product="Chevrolet Tahoe">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="5">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴700</h3>
+                    <button class="buy" 
+                        data-product-id="5" 
+                        data-product-name="Chevrolet Tahoe" 
+                        data-product-price="700">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Mitsubishi EVO.webp') }}" alt="Car 6">
+                    <h3>Mitsubishi EVO</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 420 слотів</p>
+                    <p>Колір: Червоний</p>
+                    <p> Кріплення: Морська скриня, Рюкзак,</p>
+                    <p>Зброя, Каністру</p>
+                    <p class="promo-stock" data-product="Mitsubishi EVO">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="6">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴550</h3>
+                    <button class="buy" 
+                        data-product-id="6" 
+                        data-product-name="Mitsubishi EVO" 
+                        data-product-price="550">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Porsche 911RWB.webp') }}" alt="Car 7">
+                    <h3>Porsche 911RWB</h3>
+                    <p>Кількість місць: 2</p>
+                    <p>Обсяг багажника: 400 слотів</p>
+                    <p>Колір: Червоний</p>
+                    <p class="promo-stock" data-product="Porsche 911RWB">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="7">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴400</h3>
+                    <button class="buy" 
+                        data-product-id="7" 
+                        data-product-name="Porsche 911RWB" 
+                        data-product-price="400">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Toyota Runner.webp') }}" alt="Car 8">
+                    <h3>Toyota Runner</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 610 слотів</p>
+                    <p>Колір: Синій камо</p>
+                    <p> Кріплення: Морська скриня, Каністру,</p>
+                    <p> Бочка, Рюкзак, Ящики х3</p>
+                    <p class="promo-stock" data-product="Toyota Runner">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="8">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴800</h3>
+                    <button class="buy" 
+                        data-product-id="8" 
+                        data-product-name="Toyota Runner" 
+                        data-product-price="800">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Audi RS6 ABT.webp') }}" alt="Car 9">
+                    <h3>Audi RS6 ABT</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 420 слотів</p>
+                    <p>Колір: Синій</p>
+                    <p> Кріплення: Каністру, Рюкзак</p>
+                    <p class="promo-stock" data-product="Audi RS6 ABT">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="9">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴650</h3>
+                    <button class="buy" 
+                        data-product-id="9" 
+                        data-product-name="Audi RS6 ABT" 
+                        data-product-price="650">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Audi RSQ8.webp') }}" alt="Car 10">
+                    <h3>Audi RSQ8</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Золотий</p>
+                    <p> Кріплення: Рюкзак, Зброю, Каністру</p>
+                    <p class="promo-stock" data-product="Audi RSQ8">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="10">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴800</h3>
+                    <button class="buy" 
+                        data-product-id="10" 
+                        data-product-name="Audi RSQ8" 
+                        data-product-price="800">
+                        Придбати
+                    </button>
+                </div>
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Aventador LP700.webp') }}" alt="Car 11">
+                    <h3>Aventador LP700</h3>
+                    <p>Кількість місць: 2</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Червоний</p>
+                    <p> Кріплення: Рюкзак, Зброю, Каністру</p>
+                    <p class="promo-stock" data-product="Aventador LP700">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="11">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴700</h3>
+                    <button class="buy" 
+                        data-product-id="11" 
+                        data-product-name="Aventador LP700" 
+                        data-product-price="700">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Bastard cj7.webp') }}" alt="Car 12">
+                    <h3>Bastard cj7</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Койот</p>
+                    <p> Кріплення: Рюкзак, Зброю, Каністру</p>
+                    <p class="promo-stock" data-product="Bastard cj7">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="12">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴450</h3>
+                    <button class="buy" 
+                        data-product-id="12" 
+                        data-product-name="Bastard cj7" 
+                        data-product-price="450">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Bastard Rover.webp') }}" alt="Car 13">
+                    <h3>Bastard Rover</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Синій</p>
+                    <p> Кріплення: Рюкзак, Зброю, Ящик х2, Бочка х2</p>
+                    <p class="promo-stock" data-product="Bastard Rover">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="13">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴600</h3>
+                    <button class="buy" 
+                        data-product-id="13" 
+                        data-product-name="Bastard Rover" 
+                        data-product-price="600">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Bastard w123.webp') }}" alt="Car 14">
+                    <h3>Bastard w123</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Чорний</p>
+                    <p> Кріплення: Рюкзак, Зброю, Колесо, Аптечка,</p>
+                    <p>Каністра</p>
+                    <p class="promo-stock" data-product="Bastard w123">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="14">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴450</h3>
+                    <button class="buy" 
+                        data-product-id="14" 
+                        data-product-name="Bastard w123" 
+                        data-product-price="450">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Bastard w124.webp') }}" alt="Car 15">
+                    <h3>Bastard w124</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Рожевий</p>
+                    <p> Кріплення: Рюкзак, Зброя х2, Колесо,</p>
+                    <p>Аптечка, Каністра</p>
+                    <p class="promo-stock" data-product="Bastard w124">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="15">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴450</h3>
+                    <button class="buy" 
+                        data-product-id="15" 
+                        data-product-name="Bastard w124" 
+                        data-product-price="450">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Hummer H2.webp') }}" alt="Car 16">
+                    <h3>Hummer H2</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 800 слотів</p>
+                    <p>Колір: Білий</p>
+                    <p> Кріплення: Рюкзак, Бочка х2, Каністра</p>
+                    <p class="promo-stock" data-product="Hummer H2">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="16">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴700</h3>
+                    <button class="buy" 
+                        data-product-id="16" 
+                        data-product-name="Hummer H2" 
+                        data-product-price="700">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Lexus lx470.webp') }}" alt="Car 17">
+                    <h3>Lexus lx470</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 800 слотів</p>
+                    <p>Колір: Білий</p>
+                    <p> Кріплення: Рюкзак, Бочка х2, Колесо, D</p>
+                    <p>Каністра</p>
+                    <p>Ключ для модифікації</p>
+                    <p class="promo-stock" data-product="Lexus lx470">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="17">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴750</h3>
+                    <button class="buy" 
+                        data-product-id="17" 
+                        data-product-name="Lexus lx470" 
+                        data-product-price="750">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Uaz 3151.webp') }}" alt="Car 18">
+                    <h3>Uaz 3151</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 400 слотів</p>
+                    <p>Колір: Білий</p>
+                    <p> Кріплення: Морська скриня, Каністра</p>
+                    <p>Ключ для модифікації</p>
+                    <p class="promo-stock" data-product="Uaz 3151">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="18">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴400</h3>
+                    <button class="buy" 
+                        data-product-id="18" 
+                        data-product-name="Uaz 3151" 
+                        data-product-price="400">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='BMW x5m.webp') }}" alt="Car 19">
+                    <h3>BMW x5m</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 800 слотів</p>
+                    <p>Колір: Білий</p>
+                    <p> Кріплення: Бочка х2, Рюкзак</p>
+                    <p>Ключ для модифікації</p>
+                    <p class="promo-stock" data-product="BMW x5m">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="19">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴750</h3>
+                    <button class="buy" 
+                        data-product-id="19" 
+                        data-product-name="BMW x5m" 
+                        data-product-price="750">
+                        Придбати
+                    </button>
+                </div>
+                               <div class="product">
+                    <img src="{{ url_for('static', filename='UA Novator.webp') }}" alt="Car 20">
+                    <h3>UA Novator</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 500 слотів</p>
+                    <p>Колір: Зелений камо</p>
+                    <p> Кріплення: Ящик х4, Бочка х4, Каністра х2,</p>
+                    <p> Рюкзак, Зброя</p>
+                    <p class="promo-stock" data-product="UA Novator">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="20">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴800</h3>
+                    <button class="buy" 
+                        data-product-id="20" 
+                        data-product-name="UA Novator" 
+                        data-product-price="800">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Dodge ChallengerSRT.webp') }}" alt="Car 21">
+                    <h3>Dodge ChallengerSRT</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 480 слотів</p>
+                    <p>Колір: Помаранчевий</p>
+                    <p> Кріплення: Рюкзак, Каністра,</p>
+                    <p class="promo-stock" data-product="Dodge ChallengerSRT">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="21">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴550</h3>
+                    <button class="buy" 
+                        data-product-id="21" 
+                        data-product-name="Dodge ChallengerSRT" 
+                        data-product-price="550">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='dodge charger hellcat.webp') }}" alt="Car 22">
+                    <h3>Dodge charger hellcat</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 560 слотів</p>
+                    <p>Колір: Червоний</p>
+                    <p> Кріплення: Рюкзак, Зброя, Каністра,</p>
+                    <p class="promo-stock" data-product="dodge charger hellcat">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="22">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴550</h3>
+                    <button class="buy" 
+                        data-product-id="22" 
+                        data-product-name="dodge charger hellcat" 
+                        data-product-price="550">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='DodgeRam BOSS.webp') }}" alt="Car 23">
+                    <h3>DodgeRam BOSS</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 620 слотів</p>
+                    <p>Колір: Синій</p>
+                    <p> Кріплення: Ящик х4, Бочка х2, Рюкзак,</p>
+                    <p>Каністра</p>
+                    <p class="promo-stock" data-product="DodgeRam BOSS">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="23">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴800</h3>
+                    <button class="buy" 
+                        data-product-id="23" 
+                        data-product-name="DodgeRam BOSS" 
+                        data-product-price="800">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='FC Humvee.webp') }}" alt="Car 24">
+                    <h3>FC Humvee</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Чорний</p>
+                    <p> Кріплення: Рюкзак, Аптечка, Каністра,</p>
+                    <p> Контейнер х2, Бочка х2, Сумка</p>
+                    <p class="promo-stock" data-product="FC Humvee">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="24">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴600</h3>
+                    <button class="buy" 
+                        data-product-id="24" 
+                        data-product-name="FC Humvee" 
+                        data-product-price="600">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='FC Defender.webp') }}" alt="Car 25">
+                    <h3>FC Defender</h3>
+                    <p>Кількість місць: 12</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Зелений</p>
+                    <p> Кріплення: Рюкзак, Колун, Каністра,</p>
+                    <p> Контейнер х2, Лопата, Сумка х2</p>
+                    <p class="promo-stock" data-product="FC Defender">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="25">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴850</h3>
+                    <button class="buy" 
+                        data-product-id="25" 
+                        data-product-name="FC Defender" 
+                        data-product-price="850">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='FC Niva.webp') }}" alt="Car 26">
+                    <h3>FC Niva</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Білий</p>
+                    <p> Кріплення: Рюкзак, Колун, Каністра,</p>
+                    <p> Контейнер х2, Бочки х2, Лопата</p>
+                    <p class="promo-stock" data-product="FC Niva">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="26">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴650</h3>
+                    <button class="buy" 
+                        data-product-id="26" 
+                        data-product-name="FC Niva" 
+                        data-product-price="650">
+                        Придбати
+                    </button>
+                </div>
+                                <div class="product">
+                    <img src="{{ url_for('static', filename='FC Uaz 2206.webp') }}" alt="Car 27">
+                    <h3>FC Uaz 2206</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Білий</p>
+                    <p> Кріплення: Великий Ящик х2 Рюкзак, Каністра,</p>
+                    <p>Бочка х3, Колун, Лопата</p>
+                    <p class="promo-stock" data-product="FC Uaz 2206">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="27">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴700</h3>
+                    <button class="buy" 
+                        data-product-id="27" 
+                        data-product-name="FC Uaz 2206" 
+                        data-product-price="700">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='RangeRover Vogue.webp') }}" alt="Car 28">
+                    <h3>RangeRover Vogue</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Камо червоний</p>
+                    <p> Кріплення: Рюкзак, Зброя, Каністра,</p>
+                    <p>Бочка х2</p>
+                    <p class="promo-stock" data-product="RangeRover Vogue">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="28">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴750</h3>
+                    <button class="buy" 
+                        data-product-id="28" 
+                        data-product-name="RangeRover Vogue" 
+                        data-product-price="750">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='RR Cullinan.webp') }}" alt="Car 29">
+                    <h3>RR Cullinan</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Хакі</p>
+                    <p> Кріплення: Морська скриня, Зброя, Рюкзак,</p>
+                    <p>Каністра</p>
+                    <p class="promo-stock" data-product="RR Cullinan">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="29">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴800</h3>
+                    <button class="buy" 
+                        data-product-id="29" 
+                        data-product-name="RR Cullinan" 
+                        data-product-price="800">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='VW Golf 8R.webp') }}" alt="Car 30">
+                    <h3>VW Golf 8R</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Чорний</p>
+                    <p> Кріплення: Рюкзак, Зброя, Каністра,</p>
+                    <p class="promo-stock" data-product="FC Humvee">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="30">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴600</h3>
+                    <button class="buy" 
+                        data-product-id="30" 
+                        data-product-name="VW Golf 8R" 
+                        data-product-price="600">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='bastard g55.webp') }}" alt="Car 31">
+                    <h3>Bastard G55</h3>
+                    <p>Кількість місць: 12</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Чорний</p>
+                    <p> Кріплення: Рюкзак, Зброя х5, Каністра,</p>
+                    <p class="promo-stock" data-product="bastard g55">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="31">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴450</h3>
+                    <button class="buy" 
+                        data-product-id="31" 
+                        data-product-name="bastard g55" 
+                        data-product-price="450">
+                        Придбати
+                    </button>
+                </div>
+
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Toyota LC200 Stage2.webp') }}" alt="Car 32">
+                    <h3>Toyota LC200 Stage2</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Чорний</p>
+                    <p> Кріплення: Рюкзак, Зброя, Каністра,</p>
+                    <p>Морська скриня, Бочки х2,</p>
+                    <p class="promo-stock" data-product="Toyota LC200 Stage2">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="32">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴700</h3>
+                    <button class="buy" 
+                        data-product-id="32" 
+                        data-product-name="Toyota LC200 Stage2" 
+                        data-product-price="700">
+                        Придбати
+                    </button>
+                </div>
+                <div class="product">
+                    <img src="{{ url_for('static', filename='UAZ 3172.webp') }}" alt="Car 33">
+                    <h3>UAZ 3172</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 800 слотів</p>
+                    <p>Колір: Камо зелений</p>
+                    <p> Кріплення: Ящик, Бочка х2, Каністра,</p>
+                    <p>Рюкзак, Зброю х2</p>
+                    <p class="promo-stock" data-product="UAZ 3172">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="33">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴400</h3>
+                    <button class="buy" 
+                        data-product-id="33" 
+                        data-product-name="UAZ 3172" 
+                        data-product-price="400">
+                        Придбати
+                    </button>
+                </div>
+                <div class="product">
+                    <img src="{{ url_for('static', filename='UAZ 33094.webp') }}" alt="Car 34">
+                    <h3>UAZ 33094</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 800 слотів</p>
+                    <p>Колір: Сірий</p>
+                    <p> Кріплення: Морська скриня, Ящик х6</p>
+                    <p>Каністра, Бочки х2,</p>
+                    <p class="promo-stock" data-product="UAZ 33094">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="34">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴800</h3>
+                    <button class="buy" 
+                        data-product-id="34" 
+                        data-product-name="UAZ 33094" 
+                        data-product-price="800">
+                        Придбати
+                    </button>
+                </div>
+                <div class="product">
+                    <img src="{{ url_for('static', filename='Ford Bronco 4door.webp') }}" alt="Car 35">
+                    <h3>Ford Bronco 4door</h3>
+                    <p>Кількість місць: 4</p>
+                    <p>Обсяг багажника: 1000 слотів</p>
+                    <p>Колір: Камо синій</p>
+                    <p> Кріплення: Рюкзак, Зброя, Каністра,</p>
+                    <p>Морська скриня, Бочки х2,</p>
+                    <p class="promo-stock" data-product="Ford Bronco 4door">Завантаження...</p>
+                    <div class="quantity-control">
+                        <button class="decrement">-</button>
+                          <span class="quantity" data-product-id="35">1</span>
+                        <button class="increment">+</button>
+                    </div>
+                    <h3>Ціна: ₴700</h3>
+                    <button class="buy" 
+                        data-product-id="35" 
+                        data-product-name="Ford Bronco 4door" 
+                        data-product-price="700">
+                        Придбати
+                    </button>
+                </div>
+
+            </div>
+        </section>
+        </main>
+    
+        <footer>
+            <p>&copy; 2025 Магазин DayZ APEXIA Project. Усі права захищені.</p>
+        </footer>
+        <script src="{{ url_for('static', filename='main.js') }}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const buyButtons = document.querySelectorAll('.buy');
+                const stockElements = document.querySelectorAll(".promo-stock");
+            
+                // Додавання товару в базу
+                buyButtons.forEach(button => {
+                    button.addEventListener('click', async () => {
+                        const productName = button.getAttribute('data-product-name');
+                        const productPrice = button.getAttribute('data-product-price');
+            
+                        try {
+                            const response = await fetch('/product/add', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ name: productName, price: parseFloat(productPrice) })
+                            });
+            
+                            const data = await response.json();
+                            if (response.ok && data.success) {
+                                alert(`Товар "${productName}" додано до бази з ID: ${data.product_id}`);
+                            } else {
+                                alert(`Помилка: ${data.message || 'Невідома помилка'}`);
+                            }
+                        } catch (error) {
+                            console.error('Помилка запиту:', error);
+                        }
+                    });
+                });
+            
+                // Оновлення кількості доступних промокодів
+                stockElements.forEach(async (el) => {
+                    const productName = el.getAttribute("data-product");
+            
+                    try {
+                        const response = await fetch(`/promo_stock?product=${encodeURIComponent(productName)}`);
+                        const data = await response.json();
+            
+                        if (response.ok && data.success) {
+                            el.textContent = `В наявності: ${data.remaining}`;
+                        } else {
+                            el.textContent = "Помилка отримання даних";
+                        }
+                    } catch (error) {
+                        el.textContent = "Помилка з'єднання";
+                    }
+                });
+            });
+            </script>        
+    </body>
+    </html>

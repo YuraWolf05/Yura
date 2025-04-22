@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest system</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='system.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('home') }}">Головна</a></li>
+                <li><a href="{{ url_for('news') }}">Новини</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('info') }}">Інфо</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('info') }}">Приєднатися</a></li>
+                        <li><a href="{{ url_for('Territories') }}">Території та місця</a></li>
+                        <li><a href="{{ url_for('Systems') }}">Системи та механіки</a></li>
+                        <li><a href="{{ url_for('Aboutus') }}">Про нас</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('regulations') }}">Правила</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('donate') }}">Магазин</a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('carsChernorus') }}">Chernorus</a></li>
+                    <li><a href="{{ url_for('carsDeerisle') }}">Deerisle</a></li>
+                </ul>
+                <li><a href="{{ url_for('login') }}">Вхід</a></li>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>
+        {% if user %}
+        <div class="user-info">
+            <a href="/profile">
+                <img src="{{ user.profile_image_url }}"
+                alt="Фото профілю" 
+                class="profile-image">
+            </a>
+            <div class="info-span">
+                <span>{{ user.name }}</span> 
+            </div>
+        </div> 
+        {% endif %}
+        <div class="banner-info">
+            <a href="https://discord.gg/VJcPQApmMz">
+                <img src="{{ url_for('static', filename='discort.png') }}" alt="Discord" class="discort-icon">
+            </a>
+            <a href="https://www.tiktok.com/@yarky3">
+                <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram" class="instagram-icon">
+            </a>
+            <a href="https://www.youtube.com/@YtYarky1/shorts">
+                <img src="{{ url_for('static', filename='youtube.png') }}" alt="YouTube" class="youtube-icon">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Квестова система</h1>
+        </section>
+        
+        <section class="steps">
+            <div class="step">
+                <h2>Тепер на сервері вам будуть доступні квести. Вони будуть доповнюватись та розширюватись, але поки разберемось, де їх знайти. </h2>
+                <h2 style="color: chocolate;">Книга квестів</h2>
+                <h2>Для того, що її відкрити, спершу перейдіть в налаштування → управління → привязка клавіш → несортовані (зазвичай в самому кінці) → і треба змінити кнопку, на яку у вас буде відкриватись книга (для прикладу обрано кнопку стрілочка вниз)</h2>
+                <img src="{{ url_for('static', filename='image 74.webp') }}" >
+            </div>
+
+            <div class="step">
+                <h2 style="color: darkgreen;">Візуальний огляд книги квестів. </h2>
+                <h2>Тепер ви нарешті відкриваєте книгу завдань. Виглядає вона ось так:</h2>
+                <img src="{{ url_for('static', filename='image 75.webp') }}" >
+            </div>
+
+            <div class="step">
+                <h2 style="color: rgb(5, 61, 172);">Доступні квести.</h2>
+                <h2>Як можна побачити, є доступні квести, які ви можете прийняти прямо з книги. Настиснувши на квест, ви побачите, що саме треба зробити. Але будьте обачними, є квести обмежені по часу, для прикладу прикріплено нижче. Тобто, щоб виповнити цей квест у вас є 7 реальних днів. </h2>
+                <img src="{{ url_for('static', filename='image 76.webp') }}" >
+            </div>
+
+            <div class="step">
+                <h2 style="color: rgb(187, 13, 240);">Недодоступні квести.</h2>
+                <h2>Як можна побачити, є доступні квести, які ви можете прийняти прямо з книги. Настиснувши на квест, ви побачите, що саме треба зробити. Але будьте обачними, є квести обмежені по часу, для прикладу прикріплено нижче. Тобто, щоб виповнити цей квест у вас є 7 реальних днів. </h2>
+            </div>
+
+            <div class="step">
+                <h2 style="color: rgb(233, 237, 9);">Завдання на різних картах.</h2>
+                <h2>Також, кажучі про деталі: так як сервер буде існувати на двох картах одночасно, на кожній карті у вас буде своя квестова книга, і прогрес з однієї не переноситься на іншу. Тобто, якщо ви почали виконувати квест на Черно, його не можна буде закінчити на Дірайслі.</h2>
+                <p style="color: rgb(237, 8, 8); font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">Автор CUMbala</p>
+            </div>
+
+        </section>  
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>        
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".dropdown > a").forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+        
+                    let parent = this.parentElement;
+        
+                    // Закриваємо всі інші відкриті меню
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        if (drop !== parent) {
+                            drop.classList.remove("active");
+                        }
+                    });
+        
+                    // Перемикаємо активний стан
+                    parent.classList.toggle("active");
+                });
+            });
+        
+            // Закриваємо меню при кліку за його межами
+            document.addEventListener("click", function (e) {
+                if (!e.target.closest(".dropdown")) {
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        drop.classList.remove("active");
+                    });
+                }
+            });
+        });
+        
+    </script>
+    <footer>
+        <p>&copy; 2025 APEXIA Project. Усі права захищені.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brewing Moonshine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='system.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('home') }}">Головна</a></li>
+                <li><a href="{{ url_for('news') }}">Новини</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('info') }}">Інфо</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('info') }}">Приєднатися</a></li>
+                        <li><a href="{{ url_for('Territories') }}">Території та місця</a></li>
+                        <li><a href="{{ url_for('Systems') }}">Системи та механіки</a></li>
+                        <li><a href="{{ url_for('Aboutus') }}">Про нас</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('regulations') }}">Правила</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('donate') }}">Магазин</a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('carsChernorus') }}">Chernorus</a></li>
+                    <li><a href="{{ url_for('carsDeerisle') }}">Deerisle</a></li>
+                </ul>
+                <li><a href="{{ url_for('login') }}">Вхід</a></li>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>
+        {% if user %}
+        <div class="user-info">
+            <a href="/profile">
+                <img src="{{ user.profile_image_url }}"
+                alt="Фото профілю" 
+                class="profile-image">
+            </a>
+            <div class="info-span">
+                <span>{{ user.name }}</span> 
+            </div>
+        </div> 
+        {% endif %}
+        <div class="banner-info">
+            <a href="https://discord.gg/VJcPQApmMz">
+                <img src="{{ url_for('static', filename='discort.png') }}" alt="Discord" class="discort-icon">
+            </a>
+            <a href="https://www.tiktok.com/@yarky3">
+                <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram" class="instagram-icon">
+            </a>
+            <a href="https://www.youtube.com/@YtYarky1/shorts">
+                <img src="{{ url_for('static', filename='youtube.png') }}" alt="YouTube" class="youtube-icon">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Варіння самогону</h1>
+        </section>
+        
+        <section class="steps">
+            <div class="step">
+                <p>Ця механіка дозволяє гравцю скрафтити самогонний апарат та варити самогон відповідно. Для початку разберемо як скрафтити сам самогонний апарат.</p>
+                <p>Перше, що треба, це створити “Ящик для зберігання самогонного апарату”(це не обов’язковий айтем, але його краще зробити для власного комфорту). Для цього потрібно взяти 10 дощок та об’єднати з 30 цвяхами в руках.</p>
+                <img src="{{ url_for('static', filename='image 4.webp') }}" alt="Крок 1">
+                <img src="{{ url_for('static', filename='image 5.webp') }}" alt="Крок 1">
+            </div>
+        
+            <div class="step">
+                <p>Наступним етапом треба скрафтити усі частини самогонного апарату, а саме “заготовку самогонного апарату”, “частину сухопарника”, “частину трубопроводу”  та “заготовку під дистилятор”. Для цього скористайтесь крафт-столом: знайти усе можно у розділі “Матеріали”. </p>
+                <img src="{{ url_for('static', filename='image 6.webp') }}" alt="Крок 2">
+                <p>Усі ці частини знадобляться для наступного крафту, для цього перейдіть у розділ “Обладнання”, в якому вам треба буде скрафтити: самогонний апарат, перегонний куб, сухопарник, трубопровід та дистилятор. Усі деталі для зручності можна складати в ящикдля зберігання самогонного апарату.</p>
+                <img src="{{ url_for('static', filename='image 7.webp') }}" alt="Крок 2">
+            </div>
+        
+            <div class="step">
+                <p>На цьому підготовча частина майже закінчилась, залишилось тільки розмістити наш самогонний апарат. Оберіть місце, та розмістіть: спочатку візьміть основу самогонного апарату в руки та розмістіть на зручній поверхні, усі інші деталі треба прикріпити до основи. Нижче показано вже готовий варіант повністю зібраного самогонного апарату.</p>
+                <img src="{{ url_for('static', filename='image 8.webp') }}" alt="Крок 3">
+                <p>Також вам треба буде взяти дрова та папір, покласти у відповідні слоти, відкрити кришку самогонного апарату та підпалити дрова, щоб усі деталі нагрілись.</p>
+                <p>Дистилятор та перегонний куб треба заповнити водою, для цього скористайтесь каністрою (дистилятор краще заповнити завчасно біля колонки з водою). Перегонний куб заповнюйте в останню чергу перед тим, як будете розпочинати варити самогон, тому що з нього дуже швидко випаровується вода.</p>
+                <img src="{{ url_for('static', filename='image 9.webp') }}" alt="Крок 3">
+            </div>
+        
+            <div class="step">
+                <p>До дистилятора треба прикріпити пусту скляну пляшку (їх можна знайти на мапі, тобто налутати; купити у торговця)</p>
+                <img src="{{ url_for('static', filename='image 10.webp') }}" alt="Крок 4">
+                <p>Далі у слоти перегонного куба треба помістити продукти по одному з трьох рецептів. Робити це треба доволі швидко, щоб нічого не згоріло і вода с перегонного кубу не випарувалась. Далі нічого не треба робити, коли усі продукти нагріються до певної температури, вони просто зникнуть, і замість води в перегонному кубі з’явиться брага.</p>
+                <img src="{{ url_for('static', filename='image 11.webp') }}" alt="Крок 4">
+                <img src="{{ url_for('static', filename='image 12.webp') }}" alt="Крок 4">
+            </div>
+        
+            <div class="step">
+                <p>Залишається тільки змінювати пусті скляні пляшки, коли інша заповнюється до 100%. Також в одній пляшці не можна змішувати самогон по різним рецептам (У кожного рецепту є свій колір самогону, як наприклад у самогону з груш - зелений).</p>
+                <img src="{{ url_for('static', filename='image 13.webp') }}" alt="Крок 5">
+                <h2>РЕЦЕПТИ</h2>
+                <p>Наразі існує три рецепти для варки самогону:</p>
+                <p>1 пачка цукру, 1 пачка дріжжів, 4 груши.</p>
+                <p>1 пачка цукру, 1 пачка дріжжів, 5 яблук.</p>
+                <p>1 пачка цукру, 1 пачка дріжжів, 4 сливи.</p>
+                <p>По усім рецептам виходить різний самогон, але коштує він на продаж однаково. А також для браги використовується тільки двохслотовий цукор.</p>
+            </div>
+
+            <div class="step">
+                <h1 style="color: red; font-weight: bold;"> ⚠️ Застереження!</h1>
+                <h2 style="color: red; font-weight: bold;"> Цей гайд призначений виключно для ігрового використання та не є реальною інструкцією для життя. Будь-яка інформація, представлена в ньому, стосується лише ігрового процесу і не повинна застосовуватися в реальних умовах</h2>
+            </div>
+            
+        </section>  
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>        
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".dropdown > a").forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+        
+                    let parent = this.parentElement;
+        
+                    // Закриваємо всі інші відкриті меню
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        if (drop !== parent) {
+                            drop.classList.remove("active");
+                        }
+                    });
+        
+                    // Перемикаємо активний стан
+                    parent.classList.toggle("active");
+                });
+            });
+        
+            // Закриваємо меню при кліку за його межами
+            document.addEventListener("click", function (e) {
+                if (!e.target.closest(".dropdown")) {
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        drop.classList.remove("active");
+                    });
+                }
+            });
+        });
+        
+    </script>
+    <footer>
+        <p>&copy; 2025 APEXIA Project. Усі права захищені.</p>
+    </footer>
+</body>
+</html>
+

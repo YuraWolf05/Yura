@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дані користувача</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_receipts.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Дані користувача</h1>
+    </header>
+    
+    <div class="user-info">
+        <p><strong>ID:</strong> {{ user.id }}</p>
+        <p><strong>Ім'я:</strong> {{ user.name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Number:</strong> {{ user.number }}</p>
+        <p><strong>Роль:</strong> {{ 'Адміністратор' if user.is_admin else 'Користувач' }}</p>
+        <p><strong>Статус:</strong> {{ 'Заблокований' if user.is_banned else 'Активний' }}</p>
+    </div>
+
+    <button onclick="window.location.href='{{ url_for('admin_users') }}'">Повернутись</button>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEXIA Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+</head>
+<body>
+    <div class="main">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <h1>APEXIA</h1>
+        <p>Введіть свої облікові дані для входу</p>
+        
+        <form method="POST" action="{{ url_for('login') }}">
+            {{ form.hidden_tag() }}
+            <input type="text" id="first" name="username" placeholder="Введіть своє ігрове ім'я" required>
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" placeholder="Введіть свій пароль" required>
+            
+                <!-- Кнопка для перемикання видимості пароля -->
+                <div class="toggle-password">
+                    <input type="checkbox" id="showPassword">
+                    <label for="showPassword">👁️🔓</label>
+                </div>  
+
+            <div class="container">
+                <button type="submit">Надіслати</button>
+            </div>
+        </form>
+        
+        <p>Не зареєстрований?</p>
+        <div class="container">
+            <button onclick="window.location.href='{{ url_for('registration') }}'">Створіть обліковий запис</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById("showPassword").addEventListener("change", function () {
+            let passwordField = document.getElementById("password");
+            let confirmPasswordField = document.getElementById("confirm_password");
+            let type = this.checked ? "text" : "password";
+            passwordField.type = type;
+            confirmPasswordField.type = type;
+        });
+    </script>
+</body>
+</html>

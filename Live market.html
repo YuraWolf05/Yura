@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Market</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='system.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('home') }}">Головна</a></li>
+                <li><a href="{{ url_for('news') }}">Новини</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('info') }}">Інфо</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('info') }}">Приєднатися</a></li>
+                        <li><a href="{{ url_for('Territories') }}">Території та місця</a></li>
+                        <li><a href="{{ url_for('Systems') }}">Системи та механіки</a></li>
+                        <li><a href="{{ url_for('Aboutus') }}">Про нас</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('regulations') }}">Правила</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('donate') }}">Магазин</a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('carsChernorus') }}">Chernorus</a></li>
+                    <li><a href="{{ url_for('carsDeerisle') }}">Deerisle</a></li>
+                </ul>
+                <li><a href="{{ url_for('login') }}">Вхід</a></li>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>
+        {% if user %}
+        <div class="user-info">
+            <a href="/profile">
+                <img src="{{ user.profile_image_url }}"
+                alt="Фото профілю" 
+                class="profile-image">
+            </a>
+            <div class="info-span">
+                <span>{{ user.name }}</span> 
+            </div>
+        </div> 
+        {% endif %}
+        <div class="banner-info">
+            <a href="https://discord.gg/VJcPQApmMz">
+                <img src="{{ url_for('static', filename='discort.png') }}" alt="Discord" class="discort-icon">
+            </a>
+            <a href="https://www.tiktok.com/@yarky3">
+                <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram" class="instagram-icon">
+            </a>
+            <a href="https://www.youtube.com/@YtYarky1/shorts">
+                <img src="{{ url_for('static', filename='youtube.png') }}" alt="YouTube" class="youtube-icon">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Живий ринок </h1>
+        </section>
+        
+        <section class="steps">
+            <div class="step">
+                <p>Механіка динамічного ринку дає змогу гравцям торгувати між собою в новому форматі.</p>
+                <p>Для утворення динамічного ринку на мапі відведені спеціальні зони.</p>
+                <h2>Ринок "Колхоз”</h2>
+                <p>Регіон: CHERNO</p>
+                <img src="{{ url_for('static', filename='image 32.png') }}" alt="Крок 1">
+                <h2>Ринок "Яма”</h2>
+                <p>Регіон: CHERNO</p>
+                <img src="{{ url_for('static', filename='image 33.png') }}" alt="Крок 1">
+            </div>
+        
+            <div class="step">
+                <h2>Ринок "Міхарі”</h2>
+                <p>Регіон: DEERISLE</p>
+                <img src="{{ url_for('static', filename='') }}" alt="map ">
+            </div>
+        
+            <div class="step">
+                <h2>Торговий стенд можна придбати через касові апарати, які знаходяться на територіях ринків.</h2>
+                <img src="{{ url_for('static', filename='asdimage.webp') }}" alt="Крок 3">
+                <h2>Після купівлі та встановлення стенду, власнику доступне меню управління. </h2>
+                <img src="{{ url_for('static', filename='imagasfasfe.webp') }}" alt="Крок 3">
+            </div>
+        
+            <div class="step">
+                <h2>В меню управління ви можете виставити предмети з вашого інвентаря за вашою ціною, або створити замовлення на купівлю потрібного вам предмета за бажаною ціною. </h2>
+                <img src="{{ url_for('static', filename='image 34.png') }}" alt="Крок 3">
+                <p>При створенні замовлення на купівлю потрібно мати при собі готівку в необхідній кількості, гроші будуть "заморожені" в стенді для автоматичних торгів, аналогічно як і предмети виставленні на продаж будуть утримуватись в інвентарі стенду.</p>
+                <p>Забрати вкладені гроші, або гроші отримані від продажу можна в меню управління грошима.</p>
+                <img src="{{ url_for('static', filename='imagasgasgge.webp') }}" alt="Крок 3">
+                <p>Також зверніть увагу на строк служби стенду та таймер видалення у правому верхньому кутку меню управління. При видаленні стенду весь його вміст ( предмети та гроші ) також видаляються. Слідкування за часом та збір товарів/грошей - є відповідальністю гравця.</p>
+                <p>В правому нижньому кутку меню управління вам доступна функція публікації вашого стенду.</p>
+                <img src="{{ url_for('static', filename='imaasgasgge.webp') }}" alt="Крок 4">
+                <p>Товари та замовлення зі всіх опублікованих стендів збираються на дошках оголошень. Знайти дошки оголошень можна на територіях обох ринків, Зеленій горі та Вівтарі. При взаємодії з дошкою оголошень ви можете скористатись пошуком предметів та виставити 3д мітку або маркер на карті до стенду з потрібним вам товаром/замовленням. ( не забувайте оновлювати сторінку дошки оголошень )</p>
+                <img src="{{ url_for('static', filename='imagasdasdasgasgge.webp') }}" alt="Крок 4">
+            
+        </section>  
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>        
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".dropdown > a").forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+        
+                    let parent = this.parentElement;
+        
+                    // Закриваємо всі інші відкриті меню
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        if (drop !== parent) {
+                            drop.classList.remove("active");
+                        }
+                    });
+        
+                    // Перемикаємо активний стан
+                    parent.classList.toggle("active");
+                });
+            });
+        
+            // Закриваємо меню при кліку за його межами
+            document.addEventListener("click", function (e) {
+                if (!e.target.closest(".dropdown")) {
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        drop.classList.remove("active");
+                    });
+                }
+            });
+        });
+        
+    </script>
+    <footer>
+        <p>&copy; 2025 APEXIA Project. Усі права захищені.</p>
+    </footer>
+</body>
+</html>
+

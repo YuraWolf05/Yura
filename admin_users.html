@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEXIA Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_receipts.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+</head>
+<body>
+    <header>
+        <h1>Адміністративна панель</h1>
+    </header>
+
+    <h2>Список користувачів</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ім'я</th>
+                <th>Email</th>
+                <th>Номер</th>
+                <th>Роль</th>
+                <th>Статус</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.number }}</td>
+                <td>{{ 'Адміністратор' if user.is_admin else 'Користувач' }}</td>
+                <td>{{ 'Заблокований' if user.is_banned else 'Активний' }}</td>
+                <td>
+                    <button onclick="viewUser({{ user.id }})">Перегляд</button>
+                    {% if not user.is_admin %}
+                        {% if user.is_banned %}
+                            <button onclick="unbanUser({{ user.id }})">Розблокувати</button>
+                        {% else %}
+                            <button onclick="banUser({{ user.id }})">Заблокувати</button>
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button 
+        style="color: rgb(255, 255, 255); background-color: rgb(53, 134, 13); font-size: 18px; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; margin-top: 5px; margin-left: 7px;"
+        onclick="window.history.back()">➥ Назад
+    </button>
+
+    <script>
+        function viewUser(userId) {
+            window.location.href = `/admin/view_user/${userId}`;
+        }
+
+        function banUser(userId) {
+            if (confirm("Ви впевнені, що хочете заблокувати цього користувача?")) {
+                fetch(`/admin/ban_user/${userId}`, { method: 'POST' })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        location.reload();
+                    })
+                    .catch(error => console.error('Помилка:', error));
+            }
+        }
+
+        function unbanUser(userId) {
+            if (confirm("Розблокувати користувача?")) {
+                fetch(`/admin/unban_user/${userId}`, { method: 'POST' })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        location.reload();
+                    })
+                    .catch(error => console.error('Помилка:', error));
+            }
+        }
+    </script>
+</body>
+</html>

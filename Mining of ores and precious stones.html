@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mining of ores and precious stones</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='system.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('home') }}">Головна</a></li>
+                <li><a href="{{ url_for('news') }}">Новини</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('info') }}">Інфо</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('info') }}">Приєднатися</a></li>
+                        <li><a href="{{ url_for('Territories') }}">Території та місця</a></li>
+                        <li><a href="{{ url_for('Systems') }}">Системи та механіки</a></li>
+                        <li><a href="{{ url_for('Aboutus') }}">Про нас</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('regulations') }}">Правила</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('donate') }}">Магазин</a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('carsChernorus') }}">Chernorus</a></li>
+                    <li><a href="{{ url_for('carsDeerisle') }}">Deerisle</a></li>
+                </ul>
+                <li><a href="{{ url_for('login') }}">Вхід</a></li>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>
+        {% if user %}
+        <div class="user-info">
+            <a href="/profile">
+                <img src="{{ user.profile_image_url }}"
+                alt="Фото профілю" 
+                class="profile-image">
+            </a>
+            <div class="info-span">
+                <span>{{ user.name }}</span> 
+            </div>
+        </div> 
+        {% endif %}
+        <div class="banner-info">
+            <a href="https://discord.gg/VJcPQApmMz">
+                <img src="{{ url_for('static', filename='discort.png') }}" alt="Discord" class="discort-icon">
+            </a>
+            <a href="https://www.tiktok.com/@yarky3">
+                <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram" class="instagram-icon">
+            </a>
+            <a href="https://www.youtube.com/@YtYarky1/shorts">
+                <img src="{{ url_for('static', filename='youtube.png') }}" alt="YouTube" class="youtube-icon">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Добування руди та дорогоцінного каміння</h1>
+        </section>
+        
+        <section class="steps">
+            <div class="step">
+                <h2>Гравець має можливість відправитись на пошуки корисних копалин.</h2>
+                <h2>Наразі доступно Ч видів копалин: залізо, мідь, олово, срібло, золото, сульфур, уран.</h2>
+                <h2>Кожну копалину після добування необхідно переплавити та перекувати на зливки.</h2>
+                <h2>Обладнання для обробки копалин можна створити на крафт-столі.</h2>
+                <h2>Корисні копалини розділено на чотири тіри.</h2>
+            </div>
+        
+            <div class="step">
+                <h2>Перший тір: залізо, мідь та олово.</h2>
+                <h2>Регіон: CHERNO</h2>
+                <img src="{{ url_for('static', filename='che1.webp') }}" alt="Крок 2">
+            </div>
+        
+            <div class="step">
+                <h2>Другий тір: срібло, золото та сульфур.</h2>
+                <h2>Регіон: CHERNO</h2>
+                <img src="{{ url_for('static', filename='che2.webp') }}" alt="Крок 3">
+            </div>
+        
+            <div class="step">
+                <h2>Третій тір: всі види дорогоцінного каміння</h2>
+                <h2>Регіон: DEERISLE</h2>
+                <img src="{{ url_for('static', filename='di1.webp') }}" alt="Крок 4">
+            </div>
+        
+            <div class="step">
+                <h2>Четвертий тір: уран.</h2>
+                <h2>Регіон: DEERISLE</h2>
+                <img src="{{ url_for('static', filename='di2.webp') }}" alt="Крок 5">
+            </div>
+
+            <div class="step">
+                <h2>Приклад зовнішнього вигляду та взаємодії:</h2>
+                <img src="{{ url_for('static', filename='image2.webp') }}" alt="Крок 5">
+                <img src="{{ url_for('static', filename='image.webp') }}" alt="Крок 5">
+                <h2>При додаванні в піч необроблену руду для переплавки, вам потрібно додати руду в кожен слот одного з варіантів руди для початку переплавки.</h2>
+            </div>
+
+            <div class="step">
+                <h2>При додаванні в піч необроблену руду для переплавки, вам потрібно додати руду в кожен слот одного з варіантів руди для початку переплавки.</h2>
+                <img src="{{ url_for('static', filename='pish1.png') }}" alt="Крок 5">
+                <h2>Щоб отримані шматочки переплавленої руди сформувати в зливок - вам потрібно взяти в руки стак з 10 шматочків руди та почати взаємодію з спец. ковадлом для руд.</h2>
+                <h2>Дорогоцінне каміння обробляється поштучно. Для цього необхідно взяти в руки видобуте необроблене каміння, та почати взаємодію з спеціальним шліфувальним каменем.</h2>          
+            </div>
+        </section> 
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>       
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".dropdown > a").forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+        
+                    let parent = this.parentElement;
+        
+                    // Закриваємо всі інші відкриті меню
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        if (drop !== parent) {
+                            drop.classList.remove("active");
+                        }
+                    });
+        
+                    // Перемикаємо активний стан
+                    parent.classList.toggle("active");
+                });
+            });
+        
+            // Закриваємо меню при кліку за його межами
+            document.addEventListener("click", function (e) {
+                if (!e.target.closest(".dropdown")) {
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        drop.classList.remove("active");
+                    });
+                }
+            });
+        });
+        
+    </script>
+    <footer>
+        <p>&copy; 2025 APEXIA Project. Усі права захищені.</p>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEXIA Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='registration.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+</head>
+<body>
+    <header>
+        <div class="main">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        
+            <h1>Реєстрація APEXIA</h1>
+            <h2>Введіть свої дані для реєстрації</h2>
+            
+            <form method="POST" action="{{ url_for('registration') }}">
+                {{ form.hidden_tag() }}
+
+                <label for="first">Ігрове ім'я користувача:</label>
+                <input type="text" id="first" name="username" placeholder="Введіть своє ігрове ім'я" required>
+
+                <label for="password">Пароль:</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" placeholder="Введіть свій пароль" required>
+                </div>
+
+                <label for="confirm_password">Повторіть пароль:</label>
+                <div class="password-container">
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Повторіть свій пароль" required>
+                </div>
+
+                <!-- Кнопка для перемикання видимості пароля -->
+                <div class="toggle-password">
+                    <input type="checkbox" id="showPassword">
+                    <label for="showPassword">👁️🔓</label>
+                </div>
+
+                <label for="email">Електронна пошта:</label>
+                <input type="email" id="email" name="email" placeholder="Введіть свою електронну пошту" required>
+
+                <label for="number">Мобільний номер:</label>
+                <input type="tel" id="number" name="number" placeholder="Введіть свій мобільний номер +380" pattern="\+380[0-9]{9}" required>
+
+                <div class="container">
+                    <button type="submit">Надіслати</button>
+                </div>
+            </form>
+        </div>
+    </header>
+
+    <script>
+        document.getElementById("showPassword").addEventListener("change", function () {
+            let passwordField = document.getElementById("password");
+            let confirmPasswordField = document.getElementById("confirm_password");
+            let type = this.checked ? "text" : "password";
+            passwordField.type = type;
+            confirmPasswordField.type = type;
+        });
+    </script>
+</body>
+</html>

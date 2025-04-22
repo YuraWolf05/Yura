@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apexia project Systems and mechanics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='info.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('home') }}">Головна</a></li>
+                <li><a href="{{ url_for('news') }}">Новини</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('info') }}">Інфо</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('info') }}">Приєднатися</a></li>
+                       <!-- <li><a href="{{ url_for('Territories') }}">Території та місця</a></li>-->
+                        <li><a href="{{ url_for('Systems') }}">Системи та механіки</a></li>
+                        <li><a href="{{ url_for('Aboutus') }}">Про нас</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('regulations') }}">Правила</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('donate') }}">Магазин</a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('carsChernorus') }}">Chernorus</a></li>
+                    <li><a href="{{ url_for('carsDeerisle') }}">Deerisle</a></li>
+                </ul>
+                <li><a href="{{ url_for('login') }}">Вхід</a></li>
+            </ul>
+        </nav>
+        {% if user %}
+        <div class="user-info">
+            <a href="/profile">
+                <img src="{{ user.profile_image_url }}" 
+                alt="Фото профілю" 
+                class="profile-image">
+            </a>
+            <div class="info-span">
+                <span>{{ user.name }}</span> 
+            </div>
+        </div> 
+        {% endif %}
+        <div class="banner-info">
+            <a href="https://discord.gg/VJcPQApmMz">
+                <img src="{{ url_for('static', filename='discort.png') }}" alt="Discord" class="discort-icon">
+            </a>
+            <a href="https://www.tiktok.com/@yarky3">
+                <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram" class="instagram-icon">
+            </a>
+            <a href="https://www.youtube.com/@YtYarky1/shorts">
+                <img src="{{ url_for('static', filename='youtube.png') }}" alt="YouTube" class="youtube-icon">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="systems"> 
+            <h2>⚙️ Системи та механіки</h2>
+            <div class="systems-container">
+                <ul>
+                    <li>🔨 <a href="{{ url_for('CraftingSystem') }}">Система крафту</a></li>
+                    <li>⛏  <a href="{{ url_for('MiningOfOresAndPreciousStones') }}">Добування руди та </a>
+                            <a href="{{ url_for('MiningOfOresAndPreciousStones') }}">дорогоцінного каміння</a></li>
+                    <li>🍾 <a href="{{ url_for('BrewingMoonshine') }}">Варіння самогону</a></li>
+                    <li>🌿 <a href="{{ url_for('GrowingCannabis') }}">Вирощування канабісу</a></li>
+                    <li>🛒 <a href="{{ url_for('LiveMarket') }}">Живий ринок</a></li>
+                    <li>🏦 <a href="{{ url_for('BankAndGarage') }}">Банк та гараж</a></li>
+                    <li>💊 <a href="{{ url_for('AdvancedMedicine') }}">Розширена медицина</a></li>
+                    <li>🤿 <a href="{{ url_for('DivingSystem') }}">Система дайвінгу</a></li>
+                    <li>☢️ <a href="{{ url_for('RadiationZones') }}">Радіаційні зони</a></li>
+                    <li>⭐ <a href="{{ url_for('AchievementSystem') }}">Система досягнень</a></li>
+                    <li>📜 <a href="{{ url_for('QuestSystem') }}">Квестова система</a></li>
+                    <li>💰 <a href="{{ url_for('BitcoinMining') }}">Майнінг біткоїна</a></li>
+                    <li>🔪 <a href="{{ url_for('KnifeCases') }}">Кейси з ножами</a></li>
+                    <li>🎁 <a href="{{ url_for('LootBoxes') }}">Лут-бокси</a></li>
+                    <li>🚗 <a href="{{ url_for('CarTuning') }}">Тюнінг авто</a></li>
+                </ul>
+            </div>
+        </section>
+        
+        </section>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".dropdown > a").forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+        
+                    let parent = this.parentElement;
+        
+                    // Закриваємо всі інші відкриті меню
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        if (drop !== parent) {
+                            drop.classList.remove("active");
+                        }
+                    });
+        
+                    // Перемикаємо активний стан
+                    parent.classList.toggle("active");
+                });
+            });
+        
+            // Закриваємо меню при кліку за його межами
+            document.addEventListener("click", function (e) {
+                if (!e.target.closest(".dropdown")) {
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        drop.classList.remove("active");
+                    });
+                }
+            });
+        });
+        
+    </script>
+    <footer>
+        <p>&copy; 2025 APEXIA Project. Усі права захищені.</p>
+    </footer>
+</body>
+</html>
+

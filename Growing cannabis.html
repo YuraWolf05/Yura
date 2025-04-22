@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growing Cannabis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='system.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('home') }}">Головна</a></li>
+                <li><a href="{{ url_for('news') }}">Новини</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('info') }}">Інфо</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('info') }}">Приєднатися</a></li>
+                        <li><a href="{{ url_for('Territories') }}">Території та місця</a></li>
+                        <li><a href="{{ url_for('Systems') }}">Системи та механіки</a></li>
+                        <li><a href="{{ url_for('Aboutus') }}">Про нас</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('regulations') }}">Правила</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('donate') }}">Магазин</a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('carsChernorus') }}">Chernorus</a></li>
+                    <li><a href="{{ url_for('carsDeerisle') }}">Deerisle</a></li>
+                </ul>
+                <li><a href="{{ url_for('login') }}">Вхід</a></li>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>
+        {% if user %}
+        <div class="user-info">
+            <a href="/profile">
+                <img src="{{ user.profile_image_url }}"
+                alt="Фото профілю" 
+                class="profile-image">
+            </a>
+            <div class="info-span">
+                <span>{{ user.name }}</span> 
+            </div>
+        </div> 
+        {% endif %}
+        <div class="banner-info">
+            <a href="https://discord.gg/VJcPQApmMz">
+                <img src="{{ url_for('static', filename='discort.png') }}" alt="Discord" class="discort-icon">
+            </a>
+            <a href="https://www.tiktok.com/@yarky3">
+                <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram" class="instagram-icon">
+            </a>
+            <a href="https://www.youtube.com/@YtYarky1/shorts">
+                <img src="{{ url_for('static', filename='youtube.png') }}" alt="YouTube" class="youtube-icon">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Вирощування канабісу</h1>
+        </section>
+        
+        <section class="steps">
+            <div class="step">
+                <p>В данному гайді буде повністю описано, що робити з пакетиками трави, які ви можете знайти на мапі.</p>
+                <p>Упаковане насіння. Існує декілька різновидів трави. Усі вони будуть показани нижче. При вирощуванні усі вони мають різний вигляд та різну ціну при продажу. Також в залежності від стану упакування (нетронуте - заруїнене) при розпакуванні випадає різна кількість насіння(9-1). Щоб розпокувати упакування, візьміть його в руки і прожміть ЛКМ.</p>
+                <img src="{{ url_for('static', filename='image 14.webp') }}" alt="Крок 1">
+                <p>Вирощування та сушка трави. Викопайте грядку, полийте її, також можна застосувати добриво (це може вплинути на врожайність) та посадіть насіння. Далі буде показано, як виглядають різні етапи вирощування.</p>
+                <h2>Перший етап:</h2>
+                <img src="{{ url_for('static', filename='image 15.webp') }}" alt="Крок 1">
+                <h2>Другий: </h2>
+                <img src="{{ url_for('static', filename='image 16.webp') }}" alt="Крок 1">
+                <h2>Третій:</h2>
+                <img src="{{ url_for('static', filename='image 17.webp') }}" alt="Крок 1">
+                <h2>Четвертий і кінцевий:</h2>
+                <img src="{{ url_for('static', filename='image 18.webp') }}" alt="Крок 1">
+                <p>Далі можно збирати кусти і прикріпляти до сушильного стовпа.</p>
+            </div>
+        
+            <div class="step">
+                <h2>Сушильний стовп.  Для його крафту візьміть деревяне бревно та мотузку, об’єднайте:</h2>
+                <img src="{{ url_for('static', filename='image 19.webp') }}" alt="Крок 2">
+                <p>Ви отримаєте комплект для сухостою, якій можна буде розмістити в зручному місці.</p>
+                <img src="{{ url_for('static', filename='image 20.webp') }}" alt="Крок 2">
+                <p>У сушильного стовпа є слоти, в які можно покласти кусти канабісу. </p>
+                <img src="{{ url_for('static', filename='image 21.webp') }}" alt="Крок 2">
+                <p>Після прикріплення до стовпу, треба відійти і повзаємодіяти зі стовпом, на виході ви отримаєте шишки канабісу. Якщо не натиснути “Leave to Dry” кусти просто залишаться висіти.</p>
+                <img src="{{ url_for('static', filename='image 22.webp') }}" alt="Крок 2">
+            </div>
+        
+            <div class="step">
+                <h2>Розфасування. Є два варінти фасування канабісу:</h2>
+                <p>• Закрутити цигарки;</p>
+                <p>• Брикети.</p>
+                <h2>Розберемо кожний варіант по черзі. Для того, щоб закрутити цигарки вам треба: порожня пачка з-під цигарок, пачка рулонного паперу і шишки.</h2>
+                <h2>Візьміть до рук пачку рулонного паперу, шишки для зручності залиште на підлозі, наведіться на шишки і затисніть ЛКМ і ви отримаєте косяки:</h2>
+                <img src="{{ url_for('static', filename='image 23.webp') }}" alt="Крок 3">
+                <p>Косяки можно складати по порожнім пачкам, для цього наведіться на косяк порожньою пачкою і натисніть ЛКМ. Повна пачка - 20 косяків. В одну пачку можна складати косяки одного виду.</p>
+                <img src="{{ url_for('static', filename='image 24.webp') }}" alt="Крок 3">
+            </div>
+        
+            <div class="step">
+                <h2>Для варіанту з брикетами вам знадобиться: </h2>
+                <p>• Аккумулятор;</p>
+                <p>• Вакуумний пакувальник;</p>
+                <p>• Термозбіжна обгортка;</p>
+                <p>• Верстак;</p>
+                <p>• Порожні пакетики для трави;</p>
+                <p>• Пластикова упаковка або скотч.</p>
+                <h2>Усе це можна налутати на карті або ж перекупити у інших гравців. Готовий стіл виглядає таким чином:</h2>
+                <img src="{{ url_for('static', filename='image 25.webp') }}" alt="Крок 4">
+                <p>Для того, щоб скрафтити стіл об’єднайте дошки (20 штук) та цвяхи (20 штук):</p>
+                <img src="{{ url_for('static', filename='image 26.webp') }}" alt="Крок 4">
+                <p>Для того щоб, скрутити траву в брикет, покладіть у відповідні слоти усе вищесказане. Для одного брикету треба 16 пакетиків трави або ж 32 шишки.</p>
+                <img src="{{ url_for('static', filename='image 27.webp') }}" alt="Крок 4">
+                <p>Коли заповнили усе, підійдіть до верстата та затисніть F:</p>
+                <img src="{{ url_for('static', filename='image 28.webp') }}" alt="Крок 4">
+                <img src="{{ url_for('static', filename='image 29.webp') }}" alt="Крок 4">
+            </div>
+        
+            <div class="step">
+                <p>Також пакетики можна упакувати вручну, для цього візьміть в руки порожній пакетик та об’єднайте з шишкою, затисніть ЛКМ, результат буде такий самий, як і через стіл.</p>
+                <p>Якщо ж ви не знайшли пластикову упаковку, наповнені пакетики можна закрутити вручну, Для цього візьміть в руки скотч та об’єднайте з стаком наповнених пакетиків:</p>
+                <img src="{{ url_for('static', filename='image 30.webp') }}" alt="Крок 5">
+                <p>На результат це ніяк не повпливає, уся різниця в кількості годин фасування.</p>
+                <p>На скріншоті вказане усе, що було перелічено у гайді і що може знадобитись для канабісу:</p>
+                <img src="{{ url_for('static', filename='image 31.webp') }}" alt="Крок 5">
+            </div>
+
+            <div class="step">
+                <h1 style="color: red; font-weight: bold;"> ⚠️Застереження!</h1>
+                <h2 style="color: red; font-weight: bold;"> Цей гайд призначений виключно для ігрового використання та не є реальною інструкцією для життя. Будь-яка інформація, представлена в ньому, стосується лише ігрового процесу і не повинна застосовуватися в реальних умовах</h2>
+            </div>
+        </section>  
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>        
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".dropdown > a").forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+        
+                    let parent = this.parentElement;
+        
+                    // Закриваємо всі інші відкриті меню
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        if (drop !== parent) {
+                            drop.classList.remove("active");
+                        }
+                    });
+        
+                    // Перемикаємо активний стан
+                    parent.classList.toggle("active");
+                });
+            });
+        
+            // Закриваємо меню при кліку за його межами
+            document.addEventListener("click", function (e) {
+                if (!e.target.closest(".dropdown")) {
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        drop.classList.remove("active");
+                    });
+                }
+            });
+        });
+        
+    </script>
+    <footer>
+        <p>&copy; 2025 APEXIA Project. Усі права захищені.</p>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>APEXIA Store</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='donate.css') }}">
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+ </head>
+    <body>
+        <header>
+            <nav> 
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Головна</a></li>
+                    <li><a href="{{ url_for('carsDeerisle') }}">Автівки</a></li>
+                    <li><a href="{{ url_for('trucksDeerisle') }}">Вантажівки</a></li>
+                    <li><a href="{{ url_for('helicoptersDeerisle') }}">Гвинтокрили</a></li>
+                    <!--<li><a href="{{ url_for('clothingDeerisle') }}">Комплект одягу</a></li>-->
+                    <li><a href="{{ url_for('basesDeerisle') }}">Бази</a></li>
+                </ul>
+            </nav>
+            {% if user %}
+            <div class="user-info">
+                <a href="/profile">
+                   <img src="{{ user.profile_image_url }}"
+                    alt="Фото профілю" 
+                    class="profile-image">
+                </a>
+                <div class="info-span">
+                    <span>{{ user.name }}</span> 
+                </div>
+                <div class="cart-panel">
+                    <a href="/cart" class="cart-button">
+                        <img src="{{ url_for('static', filename='shopping-shop.png') }}" 
+                             alt="Кошик" class="cart-icon">
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div> 
+            {% endif %}
+        </header>   
+        <main>
+            <!-- Вантажівки -->
+            <section id="trucks" class="category">
+                <div class="products">
+
+                                        <div class="product">
+                        <img src="{{ url_for('static', filename='FC Gaz Eger Kung.webp') }}" alt="Truck 1">
+                        <h3>FC Gaz Eger Kung</h3>
+                        <p>Кількість місць: 4</p>
+                        <p>Обсяг багажника: 1000 слотів</p>
+                        <p>Колір: Чорний</p>
+                        <p> Кріплення: Великий Ящик х2 Рюкзак,</p>
+                        <p>Бочка х2, Каністра для води х2, Газова плита, </p>
+                        <p>Контейнер х6, Ящик для патронів х3,  Колесо,</p>
+                        <p>Каністра, Аптечка х2, Похідний столик</p>
+                        <p class="promo-stock" data-product="FC Gaz Eger Kung">Завантаження...</p>
+                        <div class="quantity-control">
+                            <button class="decrement">-</button>
+                              <span class="quantity" data-product-id="36">1</span>
+                            <button class="increment">+</button>
+                        </div>
+                        <h3>Ціна: ₴800</h3>
+                        <button class="buy" 
+                            data-product-id="36" 
+                            data-product-name="FC Gaz Eger Kung" 
+                            data-product-price="800">
+                            Придбати
+                        </button>
+                    </div>
+    
+                            <div class="product">
+                                <img src="{{ url_for('static', filename='FC Gaz Eger.webp') }}" alt="Truck 2">
+                                <h3>FC Gaz Eger</h3>
+                                <p>Кількість місць: 4</p>
+                                <p>Обсяг багажника: 1000 слотів</p>
+                                <p>Колір: Білий</p>
+                                <p> Кріплення: Рюкзак, Колода х50, Дошки х50</p>
+                                <p>Лист металу х40, Колун, Лопата</p>
+                                <p class="promo-stock" data-product="FC Gaz Eger">Завантаження...</p>
+                                <div class="quantity-control">
+                                    <button class="decrement">-</button>
+                                      <span class="quantity" data-product-id="37">1</span>
+                                    <button class="increment">+</button>
+                                </div>
+                                <h3>Ціна: ₴700</h3>
+                                <button class="buy" 
+                                     data-product-id="37" 
+                                    data-product-name="FC Gaz Eger" 
+                                    data-product-price="700">
+                                    Придбати
+                                </button>
+                            </div>
+
+                                    <div class="product">
+                                        <img src="{{ url_for('static', filename='FC Zil 432730 Kung.webp') }}" alt="Truck 3">
+                                        <h3>FC Zil 432730 Kung</h3>
+                                        <p>Кількість місць: 4</p>
+                                        <p>Обсяг багажника: 1000 слотів</p>
+                                        <p>Колір: Чорний</p>
+                                        <p> Кріплення: Великий Ящик х2 Рюкзак,</p>
+                                        <p>Бочка х2, Ящик для патронів х2, Контейнер х4,</p>
+                                        <p>Сумка х6, Аптечка х3</p>
+                                        <p class="promo-stock" data-product="FC Zil 432730 Kung">Завантаження...</p>
+                                        <div class="quantity-control">
+                                            <button class="decrement">-</button>
+                                              <span class="quantity" data-product-id="38">1</span>
+                                            <button class="increment">+</button>
+                                        </div>
+                                        <h3>Ціна: ₴1000</h3>
+                                        <button class="buy" 
+                                             data-product-id="38" 
+                                            data-product-name="FC Zil 432730 Kung" 
+                                            data-product-price="1000">
+                                            Придбати
+                                        </button>
+                                    </div>
+
+                                    <div class="product">
+                                        <img src="{{ url_for('static', filename='GAZ 66.webp') }}" alt="Truck 4">
+                                        <h3>GAZ 66</h3>
+                                        <p>Кількість місць: 4</p>
+                                        <p>Обсяг багажника: 1000 слотів</p>
+                                        <p>Колір: Камо зелений</p>
+                                        <p> Кріплення: Рюкзак, Рюкзак, Зброя х2,</p>
+                                        <p>Бочка х2, Колесо, Ящик х3</p>
+                                        <p class="promo-stock" data-product="GAZ 66">Завантаження...</p>
+                                        <div class="quantity-control">
+                                            <button class="decrement">-</button>
+                                              <span class="quantity" data-product-id="39">1</span>
+                                            <button class="increment">+</button>
+                                        </div>
+                                        <h3>Ціна: ₴700</h3>
+                                        <button class="buy" 
+                                             data-product-id="39" 
+                                            data-product-name="GAZ 66" 
+                                            data-product-price="700">
+                                            Придбати
+                                        </button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="{{ url_for('static', filename='GAZ 66 kuzov.webp') }}" alt="Truck 5">
+                                        <h3>GAZ 66 Kuzov</h3>
+                                        <p>Кількість місць: 4</p>
+                                        <p>Обсяг багажника: 1000 слотів</p>
+                                        <p>Колір: Зелений</p>
+                                        <p> Кріплення: Каністра, Ящик х3, Колода х50,</p>
+                                        <p>Дошки х50, Бочка х4, Рюкзак, Зброя х2, Колесо</p>
+                                        <p class="promo-stock" data-product="GAZ 66 kuzov">Завантаження...</p>
+                                        <div class="quantity-control">
+                                            <button class="decrement">-</button>
+                                              <span class="quantity" data-product-id="40">1</span>
+                                            <button class="increment">+</button>
+                                        </div>
+                                        <h3>Ціна: ₴800</h3>
+                                        <button class="buy" 
+                                             data-product-id="40" 
+                                            data-product-name="GAZ 66 kuzov" 
+                                            data-product-price="800">
+                                            Придбати
+                                        </button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="{{ url_for('static', filename='TyphoonK.webp') }}" alt="Truck 6">
+                                        <h3>TyphoonK</h3>
+                                        <p>Кількість місць: 4</p>
+                                        <p>Обсяг багажника: 770 слотів</p>
+                                        <p>Колір: Камо зелений</p>
+                                        <p> Кріплення: Каністра, Бочка х3, Ящик х3</p>
+                                        <p>Морська скриня, Рюкзак</p>
+                                        <p class="promo-stock" data-product="TyphoonK">Завантаження...</p>
+                                        <div class="quantity-control">
+                                            <button class="decrement">-</button>
+                                              <span class="quantity" data-product-id="41">1</span>
+                                            <button class="increment">+</button>
+                                        </div>
+                                        <h3>Ціна: ₴1000</h3>
+                                        <button class="buy" 
+                                             data-product-id="41" 
+                                            data-product-name="TyphoonK" 
+                                            data-product-price="1000">
+                                            Придбати
+                                        </button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="{{ url_for('static', filename='BTR 80.webp') }}" alt="Truck 7">
+                                        <h3>BTR 80</h3>
+                                        <p>Кількість місць: 4</p>
+                                        <p>Обсяг багажника: 1000 слотів</p>
+                                        <p>Колір: Камо зима</p>
+                                        <p> Кріплення: Бочка х2, Ящик х4, Зброя,</p>
+                                        <p>Каністра</p>
+                                        <p class="promo-stock" data-product="BTR 80">Завантаження...</p>
+                                        <div class="quantity-control">
+                                            <button class="decrement">-</button>
+                                              <span class="quantity" data-product-id="42">1</span>
+                                            <button class="increment">+</button>
+                                        </div>
+                                        <h3>Ціна: ₴1000</h3>
+                                        <button class="buy" 
+                                             data-product-id="42" 
+                                            data-product-name="BTR 80" 
+                                            data-product-price="1000">
+                                            Придбати
+                                        </button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="{{ url_for('static', filename='BRDM2.webp') }}" alt="Truck 8">
+                                        <h3>BRDM2</h3>
+                                        <p>Кількість місць: 4</p>
+                                        <p>Обсяг багажника: 800 слотів</p>
+                                        <p>Колір: Камо ліс</p>
+                                        <p> Кріплення: Рюкзак, Ящик, Зброя х2, Колесо</p>
+                                        <p class="promo-stock" data-product="BRDM2">Завантаження...</p>
+                                        <div class="quantity-control">
+                                            <button class="decrement">-</button>
+                                              <span class="quantity" data-product-id="43">1</span>
+                                            <button class="increment">+</button>
+                                        </div>
+                                        <h3>Ціна: ₴700</h3>
+                                        <button class="buy" 
+                                             data-product-id="43" 
+                                            data-product-name="BRDM2" 
+                                            data-product-price="700">
+                                            Придбати
+                                        </button>
+                                    </div>
+                                    <div class="product">
+                                        <img src="{{ url_for('static', filename='BTR 80 P.webp') }}" alt="Truck 9">
+                                        <h3>BTR 80 P</h3>
+                                        <p>Кількість місць: 4</p>
+                                        <p>Обсяг багажника: 1000 слотів</p>
+                                        <p>Колір: Камо зелений</p>
+                                        <p> Кріплення: Ящик х4, Зброя, Рюкзак,Каністра</p>
+                                        <p class="promo-stock" data-product="BTR 80 P">Завантаження...</p>
+                                        <div class="quantity-control">
+                                            <button class="decrement">-</button>
+                                              <span class="quantity" data-product-id="44">1</span>
+                                            <button class="increment">+</button>
+                                        </div>
+                                        <h3>Ціна: ₴900</h3>
+                                        <button class="buy" 
+                                             data-product-id="44" 
+                                            data-product-name="BTR 80 P" 
+                                            data-product-price="900">
+                                            Придбати
+                                        </button>
+                                    </div>
+                </div>
+             </section>
+
+        </main>
+    
+        <footer>
+            <p>&copy; 2025 Магазин DayZ APEXIA Project. Усі права захищені.</p>
+        </footer>
+        <script src="{{ url_for('static', filename='main.js') }}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const buyButtons = document.querySelectorAll('.buy');
+                const stockElements = document.querySelectorAll(".promo-stock");
+            
+                // Додавання товару в базу
+                buyButtons.forEach(button => {
+                    button.addEventListener('click', async () => {
+                        const productName = button.getAttribute('data-product-name');
+                        const productPrice = button.getAttribute('data-product-price');
+            
+                        try {
+                            const response = await fetch('/product/add', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ name: productName, price: parseFloat(productPrice) })
+                            });
+            
+                            const data = await response.json();
+                            if (response.ok && data.success) {
+                                alert(`Товар "${productName}" додано до бази з ID: ${data.product_id}`);
+                            } else {
+                                alert(`Помилка: ${data.message || 'Невідома помилка'}`);
+                            }
+                        } catch (error) {
+                            console.error('Помилка запиту:', error);
+                        }
+                    });
+                });
+            
+                // Оновлення кількості доступних промокодів
+                stockElements.forEach(async (el) => {
+                    const productName = el.getAttribute("data-product");
+            
+                    try {
+                        const response = await fetch(`/promo_stock?product=${encodeURIComponent(productName)}`);
+                        const data = await response.json();
+            
+                        if (response.ok && data.success) {
+                            el.textContent = `В наявності: ${data.remaining}`;
+                        } else {
+                            el.textContent = "Помилка отримання даних";
+                        }
+                    } catch (error) {
+                        el.textContent = "Помилка з'єднання";
+                    }
+                });
+            });
+            </script>         
+    </body>
+    </html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank and garage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='system.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=1">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('home') }}">Головна</a></li>
+                <li><a href="{{ url_for('news') }}">Новини</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('info') }}">Інфо</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('info') }}">Приєднатися</a></li>
+                        <li><a href="{{ url_for('Territories') }}">Території та місця</a></li>
+                        <li><a href="{{ url_for('Systems') }}">Системи та механіки</a></li>
+                        <li><a href="{{ url_for('Aboutus') }}">Про нас</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('regulations') }}">Правила</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('donate') }}">Магазин</a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('carsChernorus') }}">Chernorus</a></li>
+                    <li><a href="{{ url_for('carsDeerisle') }}">Deerisle</a></li>
+                </ul>
+                <li><a href="{{ url_for('login') }}">Вхід</a></li>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>
+        {% if user %}
+        <div class="user-info">
+            <a href="/profile">
+                <img src="{{ user.profile_image_url }}"
+                alt="Фото профілю" 
+                class="profile-image">
+            </a>
+            <div class="info-span">
+                <span>{{ user.name }}</span> 
+            </div>
+        </div> 
+        {% endif %}
+        <div class="banner-info">
+            <a href="https://discord.gg/VJcPQApmMz">
+                <img src="{{ url_for('static', filename='discort.png') }}" alt="Discord" class="discort-icon">
+            </a>
+            <a href="https://www.tiktok.com/@yarky3">
+                <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram" class="instagram-icon">
+            </a>
+            <a href="https://www.youtube.com/@YtYarky1/shorts">
+                <img src="{{ url_for('static', filename='youtube.png') }}" alt="YouTube" class="youtube-icon">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1> Банк та гараж </h1>
+        </section>
+        
+        <section class="steps">
+            <div class="step">
+                <p>На сервері ви можете зустріти такі механіки як система банкінгу та гаражу. Розглянемо кожен варіант по черзі.</p>
+                <p>У кожного гравця є свій особистий рахунок. Його можно переглянути за допомогою банкомату, які можна зустріти на зелених зонах, базах гравців і т.д. Для того, щоб скористатись банкоматом, підійдіть до нього і затисніть F. Як виглядає особистий рахунок можна побачити нижче.</p>
+                <img src="{{ url_for('static', filename='image 35.webp') }}" alt="Крок 1">
+                <p>Також ви можете бачити груповий рахунок. Це ваш спільний рахунок з вашими тімейтами. Для того, щоб його відкрити треба сплатити 50к, натиснувши кнопку “Створити”.</p>
+                <img src="{{ url_for('static', filename='image 36.webp') }}" alt="Крок 1">
+            </div>
+        
+            <div class="step">
+                <p>У вас відкриється груповий рахунок, який буде пустий. Сюди можуть закидати грощі люди, які з вами в одній команді. Краще, щоб груповий рахунок створював лідер групи, тому що, якщо лідер розформує групу, рахунок також може зникнути. Достпу до групового рахунку мають гравці, у яких рівень в группі починається з “учасника”. “Тимчасові” гравці немають доступу до рахунку. Усі учасники, які вийшли з групи також не будуть мати доступу до рахунку.</p>
+                <img src="{{ url_for('static', filename='image 37.webp') }}" alt="map ">
+                <p>Також ви маєте можливість через банкомат скидувати грощі іншим гравцям. Для цього у полі “введіть суму” треба вказати потрібну суму, далі натиснути “надіслати гравцю” , далі треба обрати потрібного вам граця, за допомогою стрілочок перенести його у поле зліва і натиснути “операції”. </p>
+                <img src="{{ url_for('static', filename='image 38.webp') }}" alt="map ">
+            </div>
+        
+            <div class="step">
+                <h2>Паркомати та гараж. На скріншоті нижче можна побачити, як виглядає паркомат та зона парковки. Щоб скористатись паркоматом підійдіть до нього і настисніть F</h2>
+                <img src="{{ url_for('static', filename='image 39.webp') }}" alt="Крок 3">
+                <h2>Перед собою ви побачите меню, у якому є ваш особистий та груповий гараж. Також як і груповий, так і особистий гражі можно покращувати. </h2>
+                <h2>Рівні гаражу:</h2>
+                <p>• початкові 5 слотів</p>
+                <p>• другий рівень вартує 500 000 валюти та збільшує кількість слотів до 10.</p>
+                <p>• третій рівень вартує 1 000 000 валюти та збільшує кількість слотів до 15.</p>
+                <h2>Принцип дії групового гаражу такий самий, як і у групового рахунку</h2>
+                <img src="{{ url_for('static', filename='image 40.webp') }}" alt="Крок 3">
+            </div>
+        
+            <div class="step">
+                <p>Також, на зелених зонах у паркоматах з’являється варіант “Купити”. У цьому розділі ви можете: побачите вигляд машини, яку бажаєте купити; подивитись ціну а також купити. Після купівлі машини вона буде відображатись в одному зі слотів особистого гаражу. </p>
+                <img src="{{ url_for('static', filename='image 41.webp') }}" alt="Крок 3">
+                <p>Для того, щоб запаркувати свій транспорт, треба спершу купити блок StarFine-Pro у торговця запчастинами. Також з'являється можливість купити модуль керування, про який ми поговоримо пізніше. </p>
+                <img src="{{ url_for('static', filename='image 42.webp') }}" alt="Крок 3">
+                <p>Купуємо блок, підходимо до машини та натискаємо ЛКМ - встановлюємо його. У вас з'явиться вікно, в якому треба буде вказати цифровий пароль та встановити його. Для того, щоб запаркувати машину треба, щоб вона була в області зелених конусів, заблокувати її та можно підходити до паркомату. </p>
+                <img src="{{ url_for('static', filename='image 43.webp') }}" alt="Крок 4">
+                <p>Обираємо зверху особистий чи груповий, і натискаємо “Запаркувати ТЗ”. Щоб забрати машину з гаражу, треба щоб в області зелених конусів не було іншої машини, обрати потрібно машину в списку особистого чи групового гаражу та натиснути “Забрати ТЗ”.</p>
+                <img src="{{ url_for('static', filename='image 44.webp') }}" alt="Крок 4">
+            </div>
+
+            <div class="step">
+                <p>Поговоримо про модуль керування. Цей модуль може допомогти вам, якщо ви загубили машину на карті і ви не памятаєте, де її залишили. Для цього візьміть в руки модуль та натисніть ЛКМ. Перед вами з’явиться вікно з картою і міткою вашої машини. Ви також дістанційно можете заблокувати, розблокувати або ж змінити пароль на вашій машині. Відображаються лише ті ТЗ, на які ви встановлювали блок  StarFine-Pro а також авто тих, хто з вами в одній паті.</p>
+                <img src="{{ url_for('static', filename='image 45.webp') }}" alt="Крок 3">
+            </div>
+        
+        </section>  
+        <nav> 
+            <ul>
+                <li><a href="{{ url_for('Systems') }}">➥ Назад</a></li>
+            </ul>
+        </nav>        
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".dropdown > a").forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+        
+                    let parent = this.parentElement;
+        
+                    // Закриваємо всі інші відкриті меню
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        if (drop !== parent) {
+                            drop.classList.remove("active");
+                        }
+                    });
+        
+                    // Перемикаємо активний стан
+                    parent.classList.toggle("active");
+                });
+            });
+        
+            // Закриваємо меню при кліку за його межами
+            document.addEventListener("click", function (e) {
+                if (!e.target.closest(".dropdown")) {
+                    document.querySelectorAll(".dropdown").forEach(drop => {
+                        drop.classList.remove("active");
+                    });
+                }
+            });
+        });
+        
+    </script>
+    <footer>
+        <p>&copy; 2025 APEXIA Project. Усі права захищені.</p>
+    </footer>
+</body>
+</html>
+
