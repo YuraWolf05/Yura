@@ -1,0 +1,284 @@
+/* admin_receipts.css */
+
+/* Загальний стиль для сторінки */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 10px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+}
+
+/* Таблиця */
+table {
+    width: 90%;
+    margin: 18px auto;
+    border-collapse: collapse;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+table th, table td {
+    text-align: left;
+    padding: 11px;
+    border: 1.5px solid #7d7c7c;
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table img {
+    border-radius: 10px;
+}
+
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:first-of-type {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button:last-of-type {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+table th, table td {
+    width: auto; /* Дозволяє автоматичне підлаштування ширини */
+    max-width: 150px; /* Обмеження для занадто довгих текстів */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ---- ОСНОВНІ СТИЛІ ---- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* ---- СТИЛІ ДЛЯ ТАБЛИЦІ ---- */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Горизонтальний скрол для мобільних */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+table th, table td {
+    text-align: left;
+    padding: 10px;
+    border: 1.5px solid #7d7c7c;
+    white-space: nowrap; /* Запобігає переносу тексту */
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table img {
+    border-radius: 10px;
+    max-width: 70px;
+    height: auto;
+}
+
+/* ---- КНОПКИ ---- */
+.buttons-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap; /* Завжди в один рядок */
+    gap: 8px;
+    margin-top: 10px;
+    overflow-x: auto; /* Додає скролінг при потребі */
+}
+
+button {
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.3s ease;
+    min-width: 100px; /* Мінімальна ширина кнопки */
+    text-align: center;
+    white-space: nowrap; /* Запобігає переносу тексту */
+    background-color: #07e11d;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:first-of-type {
+    background-color: #72c975;
+    color: rgb(5, 5, 5);
+}
+
+button:last-of-type {
+    background-color: #f44336;
+    color: rgb(0, 0, 0);
+}
+
+
+/* ---- ФУТЕР ---- */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ---- АДАПТАЦІЯ ДЛЯ МОБІЛЬНИХ (max-width: 768px) ---- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+        justify-content: center;      
+    }
+
+    header{
+        width: 200%;
+        justify-content: center; 
+    }
+
+    .table-container {
+        overflow-x: auto;
+        justify-content: center;
+    }
+
+    table th, table td {
+        font-size: 0.9rem;
+        padding: 8px;
+        max-width: 220px;
+    }
+
+    table img {
+        max-width: 80px;
+    }
+
+    .buttons-container {
+        flex-wrap: nowrap;
+        overflow-x: auto; /* Додає скрол для кнопок */
+        justify-content: flex-start;
+    }
+
+    button {
+        font-size: 0.8rem;
+        padding: 6px;
+        min-width: 90px;
+
+    }
+}
+
+/* ---- АДАПТАЦІЯ ДЛЯ СМАРТФОНІВ (max-width: 480px) ---- */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table th, table td {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+
+    table img {
+        max-width: 50px;
+    }
+
+    .buttons-container {
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+
+    button {
+        font-size: 0.75rem;
+        padding: 5px;
+        min-width: 80px;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}

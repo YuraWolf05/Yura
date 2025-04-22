@@ -1,0 +1,465 @@
+/* Підключення шрифту */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    text-align: center;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px;
+    background-color: #222;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    background: #222;
+    justify-content: center;
+    margin: 0;
+}
+
+nav ul li {
+    position: relative;
+    padding: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fffafa;
+    font-weight: bold;
+    transition: transform 0.3s, color 0.3s;
+    display: inline-block; /* Щоб ефект працював коректно */
+}
+
+nav ul li a:hover {
+    transform: scale(1.2); /* Збільшення кнопки */
+    color: #bdf0b8; /* Зміна кольору */
+}
+
+
+/* Випадаюче меню */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #333;
+    padding: 0;
+    min-width: 150px;
+    z-index: 1000;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    transition: background 0.3s;
+}
+
+.dropdown-menu li a:hover {
+    transform: scale(1.2); /* Збільшення кнопки */
+    color: #bdf0b8; /* Зміна кольору */
+}
+
+
+/* Показуємо випадаюче меню при наведенні */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.hero h1 {
+    font-size: 32px;
+    text-shadow: 2px 0px 5px rgba(208, 210, 206, 0.8);
+}
+.hero p {
+    font-size: 20px;
+    margin: 20px 0;
+    text-shadow: 2px 0px 10px rgba(208, 210, 206, 0.8);
+}
+
+/* Стилі для новин */
+.news-section {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.news-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.news-item {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(208, 210, 206, 0.8);
+}
+
+.news-item h3 {
+    color: #14ff00;
+    font-size: 20px;
+}
+
+.news-item p {
+    color: #fff;
+    font-size: 16px;
+    white-space: pre-line;
+    text-align: left;
+    width: 780px !important;
+    margin: 35px;
+    line-height: 1.6;
+}
+
+.news-meta {
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 10px;
+    display: block;
+    text-align: right;
+}
+
+textarea {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Стилі для адмін-форми */
+.news-form {
+    background: #222;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.news-form input, .news-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background: #333;
+    border: none;
+    color: white;
+}
+
+.news-form button {
+    background: #14ff00;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.news-form button:hover {
+    background: #12d600;
+}
+
+/* Профіль користувача */
+.user-info {
+    position: absolute;
+    top: 17px;
+    right: 70px;
+    display: flex;
+    flex-direction: column; /* Вирівнюємо елементи вертикально */
+    align-items: center; /* Центруємо */
+    gap: 1px; /* Відступ між елементами */
+    margin-right: -35px;
+    font-weight: 700;  
+}
+
+.profile-image {
+    width: 65px;
+    height: 65px;
+    border-radius: 15%;
+    border: 2px solid #bdf0b8;
+    object-fit: cover;
+    box-shadow: 2px 0px 10px rgba(208, 210, 206, 0.8);
+    transition: transform 0.3s;
+}
+
+.profile-image:hover  {
+    transform: scale(1.1); /* Невеликий ефект збільшення на наведення */
+}
+
+
+.info-span {
+    color: #bdf0b8;
+    font-weight: 700;
+    margin-right: 0px;
+}
+
+
+/* Контейнер для іконок соцмереж */
+.banner-info {
+    position: fixed; /* Фіксоване розташування */
+    top: 50%; /* Вирівнюємо по центру висоти */
+    right: 25px; /* Відступ справа */
+    transform: translateY(-50%); /* Щоб було рівно по центру */
+    display: flex;
+    flex-direction: column; /* В одну колонку */
+    gap: 15px; /* Відстань між іконками */
+    z-index: 10; /* Щоб було поверх всього */
+}
+
+/* Стилі для всіх іконок */
+.banner-info a {
+    display: block;
+    width: 70px; 
+    height: 70px;
+    transition: transform 0.3s;
+
+}
+
+/* Окремо для кожної іконки */
+.discort-icon, .instagram-icon, .youtube-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 10%;
+    transition: transform 0.3s;
+}
+
+/* Ефект при наведенні */
+.banner-info a:hover img {
+    transform: scale(1.3);
+}
+
+button {
+    background: #292929;
+    color: #ffffff;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 160px !important;
+    height: 40px !important;
+}
+
+button:hover {
+    background: #d9d7d7;
+    color: #000;
+    box-shadow: 0px 4px 10px rgba(208, 210, 206, 0.8);
+}
+footer {
+    padding: 20px;
+    background: #222;
+    margin-top: 50px;
+}
+
+.news-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+
+@media (max-width: 1024px) {
+    nav {
+        overflow: visible; /* Дозволяє випадаючому меню бути видимим */
+        white-space: nowrap;
+        display: flex;
+        justify-content: flex-start;
+        padding: 5px;
+        scrollbar-width: thin;
+        scrollbar-color: #14f504 #14f504;
+    }
+
+
+    nav::-webkit-scrollbar {
+        height: 5px;
+    }
+
+    nav::-webkit-scrollbar-track {
+        background: #222;
+    }
+
+    nav::-webkit-scrollbar-thumb {
+        background-color: #555;
+        border-radius: 10px;
+    }
+
+    nav ul {
+        display: flex;
+        flex-wrap: nowrap;
+        padding: 0;
+        margin: 0;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    nav ul li {
+        flex: 0 0 auto;
+        padding: 10px;
+        position: relative; /* Додано, щоб меню не випадало за межі */
+    }
+
+    nav ul li a {
+        display: inline-block;
+        padding: 12px 18px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background 0.3s, transform 0.3s;
+        white-space: nowrap;
+    }
+
+    nav ul li a:hover {
+        text-shadow: 2px 0px 10px rgba(106, 205, 8, 0.8);
+        transform: scale(1.1);
+    }
+
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #313231;
+        border: 2px solid #14f504;
+        padding: 10px;
+        min-width: 180px;
+        z-index: 9999; /* Меню тепер над усім */
+        border-radius: 5px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+
+    .dropdown.active .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .dropdown-menu li {
+        padding: 10px;
+    }
+
+    .dropdown-menu li a {
+        display: block;
+        padding: 10px;
+        color: #fff;
+        transition: background 0.3s;
+    }
+
+    .dropdown-menu li a:hover {
+        background: #555;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .news-section {
+        padding: 25px;
+    }
+
+    .news-item p {
+        width: 95% !important;
+        margin: 15px;
+        font-size: 15px;
+    }
+
+    footer {
+        padding: 15px;
+        font-size: 14px;
+    }
+    .user-info {
+        display: none;
+    }
+    
+
+}
+
+/* 📱 Оптимізація для смартфонів (до 768px) */
+@media (max-width: 768px) {
+    .banner-info {
+        position: fixed;
+        top: 50%;
+        right: 30px;
+        transform: translateY(-10%);
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .banner-info a {
+        width: 30px;
+        height: 30px;
+    }
+
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+
+    nav {
+        padding: 10px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    nav ul {
+        flex-direction: row;
+        justify-content: flex-start;
+        display: flex;
+    }
+
+    nav ul li {
+        flex: 0 0 auto;
+        padding: 5px;
+    }
+
+    .news-section {
+        padding: 20px;
+    }
+
+    .news-item {
+        padding: 15px;
+    }
+
+    .news-item h3 {
+        font-size: 18px;
+    }
+
+    .news-item p {
+        font-size: 14px;
+        margin: 15px;
+    }
+
+    .news-form {
+        padding: 15px;
+    }
+
+    .news-form button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+
+    footer {
+        font-size: 12px;
+        text-align: center;
+    }
+}

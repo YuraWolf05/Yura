@@ -1,0 +1,204 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    text-align: center;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px;
+    background-color: #222;
+}
+
+/* Основні стилі навігації */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    background: #222;
+    justify-content: center;
+    margin: 0;
+}
+
+nav ul li {
+    position: relative;
+    padding: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    transform: scale(1.2); /* Збільшення кнопки */
+    color: #bdf0b8; /* Зміна кольору */
+}
+
+/* Випадаюче меню */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #333;
+    padding: 0;
+    min-width: 150px;
+    z-index: 1000;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    transition: background 0.3s;
+}
+
+.dropdown-menu li a:hover {
+    transform: scale(1.2); /* Збільшення кнопки */
+    color: #bdf0b8; /* Зміна кольору */
+}
+
+
+/* Показуємо випадаюче меню при наведенні */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+button {
+    background: #292929;
+    color: #ffffff;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 180px !important; /* Гарантована ширина */
+    height: 50px !important; /* Гарантована висота */
+}
+
+
+
+.modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: rgb(22, 22, 22);
+    padding: 50px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 0px 20px rgba(208, 210, 206, 0.8);
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 0px 10px rgba(208, 210, 206, 0.8);
+}
+
+button:hover {
+    background: #bdf0b8;
+    color: #000;
+    box-shadow: 0px 0px 10px rgba(208, 210, 206, 0.8);
+}
+
+
+footer {
+    padding: 20px;
+    background: #222;
+    margin-top: 510px;
+}
+
+/* Профіль користувача */
+.user-info {
+    position: absolute;
+    top: 17px;
+    right: 70px;
+    display: flex;
+    flex-direction: column; /* Вирівнюємо елементи вертикально */
+    align-items: center; /* Центруємо */
+    gap: 1px; /* Відступ між елементами */
+    margin-right: -35px;
+    font-weight: 700;  
+}
+
+.profile-image {
+    width: 65px;
+    height: 65px;
+    border-radius: 15%;
+    border: 2px solid #bdf0b8;
+    object-fit: cover;
+    box-shadow: 2px 0px 10px rgba(208, 210, 206, 0.8);
+    transition: transform 0.3s;
+}
+
+.profile-image:hover  {
+    transform: scale(1.1); /* Невеликий ефект збільшення на наведення */
+}
+
+
+.info-span {
+    color: #bdf0b8;
+    font-weight: 700;
+    margin-right: 0px;
+}
+
+
+/* Контейнер для іконок соцмереж */
+.banner-info {
+    position: fixed; /* Фіксоване розташування */
+    top: 50%; /* Вирівнюємо по центру висоти */
+    right: 25px; /* Відступ справа */
+    transform: translateY(-50%); /* Щоб було рівно по центру */
+    display: flex;
+    flex-direction: column; /* В одну колонку */
+    gap: 15px; /* Відстань між іконками */
+    z-index: 10; /* Щоб було поверх всього */
+}
+
+/* Стилі для всіх іконок */
+.banner-info a {
+    display: block;
+    width: 70px; 
+    height: 70px;
+    transition: transform 0.3s;
+
+}
+
+/* Окремо для кожної іконки */
+.discort-icon, .instagram-icon, .youtube-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 10%;
+    transition: transform 0.3s;
+}
+
+/* Ефект при наведенні */
+.banner-info a:hover img {
+    transform: scale(1.3);
+}

@@ -1,0 +1,228 @@
+/* Основні стилі */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    text-align: center;
+}
+.exit button {
+    margin-top: 15px;
+    margin-right: 650px;
+}
+
+button {
+    background: #292929;
+    color: #ffffff;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 180px !important;
+    height: 40px !important;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 50px;
+}
+
+button:hover {
+    background: #14ff00;
+    color: #000;
+    box-shadow: 0px 4px 10px rgba(208, 210, 206, 0.8);
+}
+
+
+/* -------- ДОДАНО СТИЛІ ДЛЯ НОВИН -------- */
+
+/* Форма для адміністраторів */
+.news-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 20px auto;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(208, 210, 206, 0.8);
+}
+
+.news-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #d0d1d0;
+    border-radius: 5px;
+    background: #2b2b2b;
+    color: #f0f0f0;
+    width: 780px !important; /* Гарантована ширина */
+}
+
+.news-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #d0d1d0;
+    border-radius: 5px;
+    background: #2b2b2b;
+    color: #f0f0f0;
+    height: 400px !important; /* Гарантована висота */
+    width: 780px !important; /* Гарантована ширина */
+}
+
+.news-form button {
+    background: #f07e05;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.news-form button:hover {
+    background: #9e5202;
+}
+
+/* Блок новин */
+.news-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.news-item {
+    background: #1e1e1e;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(208, 210, 206, 0.8);
+}
+
+.news-item p {
+    color: #fff;
+    font-size: 16px;
+    white-space: pre-line;
+    text-align: left;
+    width: 780px !important;
+    margin: 35px;
+    line-height: 1.6;
+}
+
+.news-meta {
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 10px;
+    display: block;
+    text-align: right;
+}
+
+textarea {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Адаптація для мобільних */
+@media (max-width: 768px) {
+    /* Контейнер навігації */
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        padding: 10px;
+    }
+
+    /* Кнопки навігації горизонтально */
+    button {
+        width: auto; /* Автоматична ширина */
+        min-width: 120px; /* Мінімальна ширина */
+        font-size: 16px;
+        height: 40px;
+        padding: 8px 15px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+        background: #14ff00;
+        color: #000;
+        box-shadow: 0px 4px 10px rgba(208, 210, 206, 0.8);
+    }
+
+    /* Зменшуємо відступи в контенті */
+    section {
+        padding: 15px;
+    }
+
+    /* Зменшуємо заголовки */
+    .feature-box h3 {
+        font-size: 20px;
+    }
+
+    /* Футер менший */
+    footer {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    /* Профіль користувача */
+    .user-info {
+        top: 10px;
+        right: 10px;
+    }
+
+    .profile-image {
+        width: 30px;
+        height: 30px;
+    }
+
+    .news-item p {
+        color: #fff;
+        font-size: 16px;
+        white-space: pre-line;
+        text-align: left;
+        width: 335px !important;
+        margin: 10px;
+        line-height: 1.6;
+    }
+}
+
+/* Адаптація для дуже маленьких екранів (до 480px) */
+@media (max-width: 480px) {
+    /* Контейнер навігації */
+    .container {
+        flex-wrap: nowrap; /* Не переносимо кнопки на новий рядок */
+        overflow-x: auto; /* Додаємо горизонтальну прокрутку, якщо кнопки не вміщаються */
+        justify-content: flex-start;
+        white-space: nowrap;
+        padding: 8px;
+    }
+
+    /* Кнопки навігації */
+    button {
+        min-width: 110px;
+        font-size: 14px;
+        height: 38px;
+        padding: 6px 12px;
+    }
+
+    /* Заголовки */
+    .feature-box h3 {
+        font-size: 18px;
+    }
+
+    ul li {
+        font-size: 16px;
+    }
+
+    /* Футер */
+    footer {
+        font-size: 12px;
+    }
+
+    /* Приховуємо фото профілю, якщо дуже маленький екран */
+    .user-info {
+        display: none;
+    }
+}
